@@ -1,0 +1,11 @@
+{
+"mappings": [
+  "/content/diahidrogeno/:/",
+  "/content/diahidrogeno/configuration:/.helix/config.json",
+  "/content/diahidrogeno/metadata:/metadata.json"
+  ],
+"includes": [
+  "/content/diahidrogeno/"
+  ]
+}
+ 
