@@ -5,100 +5,93 @@ export default function decorate(block) {
   const accordion = document.createElement('div');
   accordion.className = 'accordion-wrapper';
 
-  // Extract title and text from first row if present
-  const children = [...block.children];
+  const rows = [...block.children];
   let startIndex = 0;
-  
-  if (children.length > 0) {
-    const firstRow = children[0];
-    const firstRowChildren = firstRow.children;
-    
-    // Check if first row has title/text (not accordion items)
-    if (firstRowChildren.length > 0 && !firstRow.classList.contains('accordion-item')) {
+
+  // Check if first row is header (title + description)
+  if (rows.length > 0 && rows[0].children.length === 2) {
+    const firstRow = rows[0];
+    const firstCell = firstRow.children[0];
+    const secondCell = firstRow.children[1];
+
+    // If first cell is short (likely a title) and second has content, treat as header
+    if (firstCell.textContent.length < 100) {
       const headerDiv = document.createElement('div');
       headerDiv.className = 'accordion-header';
-      
-      // Check if first cell looks like a title (single short element)
-      const firstCell = firstRowChildren[0];
-      if (firstCell.children.length <= 1 || firstCell.textContent.length < 200) {
-        const title = document.createElement('h2');
-        title.className = 'accordion-title';
-        moveInstrumentation(firstCell, title);
-        title.textContent = firstCell.textContent.trim();
-        headerDiv.append(title);
-        
-        // Second cell is text/description
-        if (firstRowChildren.length > 1) {
-          const textCell = firstRowChildren[1];
-          const text = document.createElement('div');
-          text.className = 'accordion-description';
-          moveInstrumentation(textCell, text);
-          
-          // Copy all content from textCell to text
-          while (textCell.firstChild) {
-            text.append(textCell.firstChild);
-          }
-          
-          headerDiv.append(text);
-        }
-        
-        accordion.append(headerDiv);
-        startIndex = 1;
+      moveInstrumentation(firstRow, headerDiv);
+
+      // Move title content
+      const titleDiv = document.createElement('div');
+      titleDiv.className = 'accordion-title';
+      while (firstCell.firstChild) {
+        titleDiv.append(firstCell.firstChild);
       }
+      headerDiv.append(titleDiv);
+
+      // Move description content
+      const descDiv = document.createElement('div');
+      descDiv.className = 'accordion-description';
+      while (secondCell.firstChild) {
+        descDiv.append(secondCell.firstChild);
+      }
+      headerDiv.append(descDiv);
+
+      accordion.append(headerDiv);
+      startIndex = 1;
     }
   }
 
   const accordionContent = document.createElement('div');
   accordionContent.className = 'accordion-content';
-  accordion.append(accordionContent);
 
-  children.slice(startIndex).forEach((row, index) => {
+  rows.slice(startIndex).forEach((row, index) => {
     const item = document.createElement('div');
     item.className = 'accordion-item';
+    moveInstrumentation(row, item);
 
-    const itemChildren = [...row.children];
-    
-    if (itemChildren.length >= 2) {
-      // First cell is the title
-      const titleDiv = itemChildren[0];
-      const titleButton = document.createElement('button');
-      titleButton.className = 'accordion-trigger';
-      titleButton.id = `accordion-title-${index}`;
-      titleButton.setAttribute('aria-expanded', 'false');
-      titleButton.setAttribute('aria-controls', `accordion-content-${index}`);
-      moveInstrumentation(titleDiv, titleButton);
-      
-      // Use text content from the cell
-      titleButton.textContent = titleDiv.textContent.trim();
+    const cells = [...row.children];
 
-      // Second cell is the content
-      const contentDiv = itemChildren[1];
-      const content = document.createElement('div');
-      content.className = 'accordion-panel';
-      content.id = `accordion-content-${index}`;
-      content.setAttribute('role', 'region');
-      content.setAttribute('aria-labelledby', `accordion-title-${index}`);
-      content.style.display = 'none';
-      
-      moveInstrumentation(contentDiv, content);
-      
-      // Copy all content from contentDiv to content
-      while (contentDiv.firstChild) {
-        content.append(contentDiv.firstChild);
+    if (cells.length >= 2) {
+      // Create trigger button
+      const trigger = document.createElement('button');
+      trigger.className = 'accordion-trigger';
+      trigger.id = `accordion-trigger-${index}`;
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.setAttribute('aria-controls', `accordion-panel-${index}`);
+      moveInstrumentation(cells[0], trigger);
+
+      // Move title content into button
+      while (cells[0].firstChild) {
+        trigger.append(cells[0].firstChild);
       }
 
-      item.append(titleButton, content);
+      // Create panel
+      const panel = document.createElement('div');
+      panel.className = 'accordion-panel';
+      panel.id = `accordion-panel-${index}`;
+      panel.setAttribute('role', 'region');
+      panel.setAttribute('aria-labelledby', `accordion-trigger-${index}`);
+      panel.style.display = 'none';
+      moveInstrumentation(cells[1], panel);
+
+      // Move content into panel
+      while (cells[1].firstChild) {
+        panel.append(cells[1].firstChild);
+      }
+
+      item.append(trigger, panel);
 
       // Add click handler
-      titleButton.addEventListener('click', () => {
-        const isExpanded = titleButton.getAttribute('aria-expanded') === 'true';
-        titleButton.setAttribute('aria-expanded', !isExpanded);
-        content.style.display = isExpanded ? 'none' : 'block';
+      trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', !isExpanded);
+        panel.style.display = isExpanded ? 'none' : 'block';
       });
-
-      accordionContent.append(item);
     }
+
+    accordionContent.append(item);
   });
 
+  accordion.append(accordionContent);
   block.replaceChildren(accordion);
 }
