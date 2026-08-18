@@ -239,6 +239,13 @@
     "fields": [
       {
         "component": "text",
+        "name": "time",
+        "value": "",
+        "label": "Time",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
         "name": "title",
         "value": "",
         "label": "Title",

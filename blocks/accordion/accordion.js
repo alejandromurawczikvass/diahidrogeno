@@ -52,17 +52,51 @@ export default function decorate(block) {
     const cells = [...row.children];
 
     if (cells.length >= 2) {
-      // Create trigger button
+      let timeContent = null;
+      let titleContent = null;
+      let contentCell = null;
+
+      // Handle different cell configurations
+      if (cells.length === 3) {
+        // Time | Title | Content
+        timeContent = cells[0];
+        titleContent = cells[1];
+        contentCell = cells[2];
+      } else if (cells.length === 2) {
+        // Time | Title+Content or just Title | Content
+        // Check if first cell looks like time (short, no complex elements)
+        if (cells[0].textContent.length < 10) {
+          timeContent = cells[0];
+          titleContent = cells[1];
+        } else {
+          // No separate time, use title/content structure
+          titleContent = cells[0];
+          contentCell = cells[1];
+        }
+      }
+
+      // Create time badge
+      let timeBadge = null;
+      if (timeContent) {
+        timeBadge = document.createElement('div');
+        timeBadge.className = 'accordion-time';
+        moveInstrumentation(timeContent, timeBadge);
+        while (timeContent.firstChild) {
+          timeBadge.append(timeContent.firstChild);
+        }
+      }
+
+      // Create trigger button with title
       const trigger = document.createElement('button');
       trigger.className = 'accordion-trigger';
       trigger.id = `accordion-trigger-${index}`;
       trigger.setAttribute('aria-expanded', 'false');
       trigger.setAttribute('aria-controls', `accordion-panel-${index}`);
-      moveInstrumentation(cells[0], trigger);
+      moveInstrumentation(titleContent, trigger);
 
       // Move title content into button
-      while (cells[0].firstChild) {
-        trigger.append(cells[0].firstChild);
+      while (titleContent.firstChild) {
+        trigger.append(titleContent.firstChild);
       }
 
       // Create panel
@@ -72,14 +106,24 @@ export default function decorate(block) {
       panel.setAttribute('role', 'region');
       panel.setAttribute('aria-labelledby', `accordion-trigger-${index}`);
       panel.style.display = 'none';
-      moveInstrumentation(cells[1], panel);
 
-      // Move content into panel
-      while (cells[1].firstChild) {
-        panel.append(cells[1].firstChild);
+      if (contentCell) {
+        moveInstrumentation(contentCell, panel);
+        while (contentCell.firstChild) {
+          panel.append(contentCell.firstChild);
+        }
       }
 
-      item.append(trigger, panel);
+      // Build timeline item structure
+      const itemContent = document.createElement('div');
+      itemContent.className = 'accordion-item-content';
+
+      if (timeBadge) {
+        item.append(timeBadge);
+      }
+
+      itemContent.append(trigger, panel);
+      item.append(itemContent);
 
       // Add click handler
       trigger.addEventListener('click', () => {
