@@ -20,11 +20,11 @@ export default function decorate(block) {
       
       // Check if first cell looks like a title (single short element)
       const firstCell = firstRowChildren[0];
-      if (firstCell.children.length <= 1) {
+      if (firstCell.children.length <= 1 || firstCell.textContent.length < 200) {
         const title = document.createElement('h2');
         title.className = 'accordion-title';
         moveInstrumentation(firstCell, title);
-        title.innerHTML = firstCell.innerHTML;
+        title.textContent = firstCell.textContent.trim();
         headerDiv.append(title);
         
         // Second cell is text/description
@@ -33,7 +33,12 @@ export default function decorate(block) {
           const text = document.createElement('div');
           text.className = 'accordion-description';
           moveInstrumentation(textCell, text);
-          text.innerHTML = textCell.innerHTML;
+          
+          // Copy all content from textCell to text
+          while (textCell.firstChild) {
+            text.append(textCell.firstChild);
+          }
+          
           headerDiv.append(text);
         }
         
@@ -45,6 +50,7 @@ export default function decorate(block) {
 
   const accordionContent = document.createElement('div');
   accordionContent.className = 'accordion-content';
+  accordion.append(accordionContent);
 
   children.slice(startIndex).forEach((row, index) => {
     const item = document.createElement('div');
@@ -55,19 +61,15 @@ export default function decorate(block) {
     if (itemChildren.length >= 2) {
       // First cell is the title
       const titleDiv = itemChildren[0];
-      const title = document.createElement('button');
-      title.className = 'accordion-trigger';
-      title.setAttribute('aria-expanded', 'false');
-      title.setAttribute('aria-controls', `accordion-content-${index}`);
-      moveInstrumentation(titleDiv, title);
+      const titleButton = document.createElement('button');
+      titleButton.className = 'accordion-trigger';
+      titleButton.id = `accordion-title-${index}`;
+      titleButton.setAttribute('aria-expanded', 'false');
+      titleButton.setAttribute('aria-controls', `accordion-content-${index}`);
+      moveInstrumentation(titleDiv, titleButton);
       
-      // Extract text content
-      while (titleDiv.firstElementChild) {
-        title.append(titleDiv.firstElementChild);
-      }
-      if (titleDiv.textContent) {
-        title.textContent = titleDiv.textContent;
-      }
+      // Use text content from the cell
+      titleButton.textContent = titleDiv.textContent.trim();
 
       // Second cell is the content
       const contentDiv = itemChildren[1];
@@ -80,28 +82,23 @@ export default function decorate(block) {
       
       moveInstrumentation(contentDiv, content);
       
-      while (contentDiv.firstElementChild) {
-        content.append(contentDiv.firstElementChild);
-      }
-      if (contentDiv.textContent) {
-        content.innerHTML = contentDiv.innerHTML;
+      // Copy all content from contentDiv to content
+      while (contentDiv.firstChild) {
+        content.append(contentDiv.firstChild);
       }
 
-      title.id = `accordion-title-${index}`;
-      
-      item.append(title, content);
+      item.append(titleButton, content);
 
       // Add click handler
-      title.addEventListener('click', () => {
-        const isExpanded = title.getAttribute('aria-expanded') === 'true';
-        title.setAttribute('aria-expanded', !isExpanded);
+      titleButton.addEventListener('click', () => {
+        const isExpanded = titleButton.getAttribute('aria-expanded') === 'true';
+        titleButton.setAttribute('aria-expanded', !isExpanded);
         content.style.display = isExpanded ? 'none' : 'block';
       });
-    }
 
-    accordion.append(item);
+      accordionContent.append(item);
+    }
   });
 
-  accordion.append(accordionContent);
   block.replaceChildren(accordion);
 }
