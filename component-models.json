@@ -216,25 +216,6 @@
     ]
   },
   {
-    "id": "accordion",
-    "fields": [
-      {
-        "component": "text",
-        "name": "title",
-        "value": "",
-        "label": "Accordion Title",
-        "valueType": "string"
-      },
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Accordion Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
     "id": "accordion-item",
     "fields": [
       {

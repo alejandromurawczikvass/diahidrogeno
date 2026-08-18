@@ -6,45 +6,11 @@ export default function decorate(block) {
   accordion.className = 'accordion-wrapper';
 
   const rows = [...block.children];
-  let startIndex = 0;
-
-  // Check if first row is header (title + description)
-  if (rows.length > 0 && rows[0].children.length === 2) {
-    const firstRow = rows[0];
-    const firstCell = firstRow.children[0];
-    const secondCell = firstRow.children[1];
-
-    // If first cell is short (likely a title) and second has content, treat as header
-    if (firstCell.textContent.length < 100) {
-      const headerDiv = document.createElement('div');
-      headerDiv.className = 'accordion-header';
-      moveInstrumentation(firstRow, headerDiv);
-
-      // Move title content
-      const titleDiv = document.createElement('div');
-      titleDiv.className = 'accordion-title';
-      while (firstCell.firstChild) {
-        titleDiv.append(firstCell.firstChild);
-      }
-      headerDiv.append(titleDiv);
-
-      // Move description content
-      const descDiv = document.createElement('div');
-      descDiv.className = 'accordion-description';
-      while (secondCell.firstChild) {
-        descDiv.append(secondCell.firstChild);
-      }
-      headerDiv.append(descDiv);
-
-      accordion.append(headerDiv);
-      startIndex = 1;
-    }
-  }
 
   const accordionContent = document.createElement('div');
   accordionContent.className = 'accordion-content';
 
-  rows.slice(startIndex).forEach((row, index) => {
+  rows.forEach((row, index) => {
     const item = document.createElement('div');
     item.className = 'accordion-item';
     moveInstrumentation(row, item);
@@ -107,11 +73,16 @@ export default function decorate(block) {
       panel.setAttribute('aria-labelledby', `accordion-trigger-${index}`);
       panel.style.display = 'none';
 
-      if (contentCell) {
+      // Check if there's content to expand
+      const hasContent = contentCell && contentCell.textContent.trim().length > 0;
+
+      if (contentCell && hasContent) {
         moveInstrumentation(contentCell, panel);
         while (contentCell.firstChild) {
           panel.append(contentCell.firstChild);
         }
+        // Add class to show arrow only if there's content
+        trigger.classList.add('has-content');
       }
 
       // Build timeline item structure
@@ -125,12 +96,14 @@ export default function decorate(block) {
       itemContent.append(trigger, panel);
       item.append(itemContent);
 
-      // Add click handler
-      trigger.addEventListener('click', () => {
-        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-        trigger.setAttribute('aria-expanded', !isExpanded);
-        panel.style.display = isExpanded ? 'none' : 'block';
-      });
+      // Add click handler only if there's content
+      if (hasContent) {
+        trigger.addEventListener('click', () => {
+          const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+          trigger.setAttribute('aria-expanded', !isExpanded);
+          panel.style.display = isExpanded ? 'none' : 'block';
+        });
+      }
     }
 
     accordionContent.append(item);
