@@ -46,7 +46,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.75) 100%);
+  background: url("../images/hero-bg-diadelhidrogenoenagas.jpg") center / cover no-repeat;
   z-index: 1;
   pointer-events: none;
 }
