@@ -3,6 +3,33 @@
   padding: 0;
 }
 
+.accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-header {
+  padding: 24px;
+  background-color: var(--light-color);
+  border-bottom: 2px solid #dadada;
+  margin-bottom: 0;
+}
+
+.accordion-title {
+  margin: 0 0 12px 0;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.accordion-description {
+  margin: 0;
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
 .accordion-content {
   border: 1px solid #dadada;
   border-radius: 4px;
