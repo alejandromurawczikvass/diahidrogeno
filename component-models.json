@@ -234,9 +234,16 @@
       },
       {
         "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description (Optional)",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
         "name": "content",
         "value": "",
-        "label": "Content",
+        "label": "Content (Optional)",
         "valueType": "string"
       }
     ]

@@ -20,16 +20,30 @@ export default function decorate(block) {
     if (cells.length >= 2) {
       let timeContent = null;
       let titleContent = null;
+      let descriptionContent = null;
       let contentCell = null;
 
       // Handle different cell configurations
-      if (cells.length === 3) {
-        // Time | Title | Content
+      if (cells.length === 4) {
+        // Time | Title | Description | Content
         timeContent = cells[0];
         titleContent = cells[1];
-        contentCell = cells[2];
+        descriptionContent = cells[2];
+        contentCell = cells[3];
+      } else if (cells.length === 3) {
+        // Time | Title | Content OR Time | Title | Description
+        timeContent = cells[0];
+        titleContent = cells[1];
+        // Check if third cell is description or content
+        // If it's short and has no complex elements, assume description
+        const thirdCellText = cells[2].textContent.trim();
+        if (thirdCellText.length < 200 && cells[2].children.length <= 2) {
+          descriptionContent = cells[2];
+        } else {
+          contentCell = cells[2];
+        }
       } else if (cells.length === 2) {
-        // Time | Title+Content or just Title | Content
+        // Time | Title+Description+Content or just Title | Content
         // Check if first cell looks like time (short, no complex elements)
         if (cells[0].textContent.length < 10) {
           timeContent = cells[0];
@@ -65,6 +79,17 @@ export default function decorate(block) {
         trigger.append(titleContent.firstChild);
       }
 
+      // Create description element if present
+      let description = null;
+      if (descriptionContent && descriptionContent.textContent.trim().length > 0) {
+        description = document.createElement('div');
+        description.className = 'accordion-description';
+        moveInstrumentation(descriptionContent, description);
+        while (descriptionContent.firstChild) {
+          description.append(descriptionContent.firstChild);
+        }
+      }
+
       // Create panel
       const panel = document.createElement('div');
       panel.className = 'accordion-panel';
@@ -75,6 +100,7 @@ export default function decorate(block) {
 
       // Check if there's content to expand
       const hasContent = contentCell && contentCell.textContent.trim().length > 0;
+      const hasDescription = description !== null;
 
       if (contentCell && hasContent) {
         moveInstrumentation(contentCell, panel);
@@ -93,7 +119,14 @@ export default function decorate(block) {
         item.append(timeBadge);
       }
 
-      itemContent.append(trigger, panel);
+      const titleSection = document.createElement('div');
+      titleSection.className = 'accordion-title-section';
+      titleSection.append(trigger);
+      if (hasDescription) {
+        titleSection.append(description);
+      }
+
+      itemContent.append(titleSection, panel);
       item.append(itemContent);
 
       // Add click handler only if there's content
