@@ -20,6 +20,7 @@ export default function decorate(block) {
   let titleCell = null;
   let imageCell = null;
   let dateCell = null;
+  let backgroundImageUrl = null;
 
   // First row typically has title and image
   if (rows.length > 0) {
@@ -38,6 +39,21 @@ export default function decorate(block) {
     if (secondRowCells.length >= 1) {
       dateCell = secondRowCells[0];
     }
+  }
+
+  // Extract background image URL from imageCell
+  if (imageCell) {
+    const picture = imageCell.querySelector('picture');
+    const img = imageCell.querySelector('img');
+
+    if (img) {
+      backgroundImageUrl = img.src;
+    }
+  }
+
+  // Apply background image to hero
+  if (backgroundImageUrl) {
+    hero.style.backgroundImage = `url('${backgroundImageUrl}')`;
   }
 
   // Create hero__title
