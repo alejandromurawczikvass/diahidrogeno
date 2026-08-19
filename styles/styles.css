@@ -171,6 +171,36 @@ a:hover {
   text-decoration: underline;
 }
 
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 10;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--text-color-primary);
+  color: var(--background-color);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top span {
+  font-size: 24px;
+  line-height: 1;
+}
+
 /* buttons */
 p.button-wrapper {
   margin: 12px 0;

@@ -109,6 +109,27 @@ export function decorateButtons(main) {
   });
 }
 
+function addBackToTopButton() {
+  const button = document.createElement('button');
+  button.className = 'back-to-top';
+  button.type = 'button';
+  button.setAttribute('aria-label', 'Volver arriba');
+  button.innerHTML = '<span aria-hidden="true">&#8593;</span>';
+
+  const updateVisibility = () => {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    button.classList.toggle('is-visible', scrollableHeight > 0 && window.scrollY > scrollableHeight / 2);
+  };
+
+  button.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  window.addEventListener('resize', updateVisibility);
+  document.body.append(button);
+  updateVisibility();
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -120,6 +141,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
+  addBackToTopButton();
 }
 
 /**

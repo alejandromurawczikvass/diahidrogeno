@@ -36,25 +36,33 @@ function createYoutubeVideo(value) {
 
 export default function decorate(block) {
   const list = document.createElement('ul');
-  list.className = 'anteriores-list';
+  list.className = 'grid-fourths';
 
   [...block.children].forEach((row) => {
     const item = document.createElement('li');
+    const videoContainer = document.createElement('div');
+    const info = document.createElement('div');
     moveInstrumentation(row, item);
 
+    item.className = 'card-video';
+    videoContainer.className = 'ratio ratio-16x9 bg-iframe card-video__video';
+    info.className = 'card-video__info';
     while (row.firstElementChild) item.append(row.firstElementChild);
 
     const videoField = item.firstElementChild;
     if (videoField) {
       const video = createYoutubeVideo(videoField.textContent.trim());
       if (video) {
-        videoField.replaceWith(video);
-        video.className = 'anteriores-video';
+        videoContainer.append(video);
+        videoField.remove();
       } else {
         videoField.className = 'anteriores-video-url';
+        videoContainer.append(videoField);
       }
     }
 
+    while (item.firstElementChild) info.append(item.firstElementChild);
+    item.append(videoContainer, info);
     list.append(item);
   });
 
