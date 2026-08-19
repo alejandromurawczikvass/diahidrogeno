@@ -54,17 +54,6 @@
               "value": "h6"
             }
           ]
-        },
-        {
-          "component": "multiselect",
-          "name": "classes",
-          "label": "Style",
-          "options": [
-            {
-              "name": "Centrar",
-              "value": "centrar"
-            }
-          ]
         }
       ]
     }

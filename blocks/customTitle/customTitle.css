@@ -1,0 +1,36 @@
+[class~="customTitle"] {
+  display: block;
+}
+
+[class~="customTitle"] .custom-title-heading,
+[class~="customTitle"] .custom-title-text {
+  width: 100%;
+}
+
+[class~="customTitle"] .custom-title-align-left {
+  text-align: left;
+}
+
+[class~="customTitle"] .custom-title-align-center {
+  text-align: center;
+}
+
+[class~="customTitle"] .custom-title-align-right {
+  text-align: right;
+}
+
+[class~="customTitle"] .custom-title-color-default {
+  color: inherit;
+}
+
+[class~="customTitle"] .custom-title-color-primary {
+  color: var(--text-color-primary);
+}
+
+[class~="customTitle"] .custom-title-color-primary-dark {
+  color: var(--text-color-primary-dark);
+}
+
+[class~="customTitle"] .custom-title-color-text {
+  color: var(--text-color);
+}

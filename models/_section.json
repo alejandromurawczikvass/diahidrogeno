@@ -56,7 +56,8 @@
         "columns",
         "fragment",
         "accordion",
-        "anteriores"
+        "anteriores",
+        "customTitle"
       ]
     }
   ]
