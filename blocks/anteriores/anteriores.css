@@ -1,0 +1,20 @@
+.anteriores > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.anteriores > ul > li {
+  display: flex;
+  flex-direction: column;
+}
+
+.anteriores .anteriores-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+.anteriores .anteriores-video-url {
+  color: var(--text-color);
+}

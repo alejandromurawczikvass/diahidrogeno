@@ -20,11 +20,11 @@
 .accordion-content::before {
   content: '';
   position: absolute;
-  left: 43px;
+  left: 75px;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, #758900, #758900);
+  background: linear-gradient(to bottom, var(--text-color-primary), var(--text-color-primary-dark));
 }
 
 .accordion-item {
@@ -41,11 +41,12 @@
 
 .accordion-time {
   flex-shrink: 0;
-  width: 60px;
+  width: 40px;
+  height: 20px;
   padding: 8px 12px;
-  background-color: #758900;
-  color: #131313;
-  font-weight: 600;
+  background-color: var(--text-color-primary);
+  color: var(--light-color);
+  font-weight: 400;
   font-size: 14px;
   text-align: center;
   border-radius: 2px;
@@ -55,6 +56,11 @@
   justify-content: center;
   position: relative;
   z-index: 1;
+  border-radius: 4px;
+}
+
+.accordion-time p{
+  margin: 0;
 }
 
 .accordion-item-content {
@@ -71,8 +77,8 @@
   border: none;
   cursor: pointer;
   font-size: var(--body-font-size-s);
-  font-weight: 600;
-  color: #758900;
+  font-weight: 400;
+  color: var(--text-color-primary);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -82,7 +88,7 @@
 }
 
 .accordion-trigger:hover {
-  color: #5a6600;
+  color: var(--text-color-primary-dark);
 }
 
 .accordion-trigger:focus-visible {
@@ -97,12 +103,12 @@
   font-size: 12px;
   transition: transform 0.3s ease;
   flex-shrink: 0;
-  color: #758900;
+  color: var(--text-color-primary);
 }
 
 .accordion-trigger.has-content::after {
   display: inline-block;
-  color: #758900;
+  color: var(--text-color-primary);
 }
 
 .accordion-trigger.has-content[aria-expanded="true"]::after {
@@ -115,12 +121,17 @@
   gap: 8px;
 }
 
+.accordion-trigger p{
+  margin: 0;
+}
+
 .accordion-description {
   font-size: 14px;
-  color: #707070;
+  color: var(--text-color);
   font-weight: 400;
   line-height: 1.5;
   margin: 0;
+  text-align: left;
 }
 
 .accordion-panel {
@@ -128,9 +139,10 @@
   background-color: transparent;
   display: none;
   animation: slide-down 0.3s ease-out;
-  color: #707070;
+  color: var(--text-color);
   font-size: var(--body-font-size-s);
   line-height: 1.6;
+  text-align: left;
 }
 
 .accordion-panel[style*="display: block"] {
@@ -175,13 +187,8 @@
 
 /* Responsive adjustments */
 @media (width >= 900px) {
-  .accordion-item {
+  .accordion-item:not(:first-child) {
     padding: 20px 0;
     gap: 32px;
-  }
-
-  .accordion-time {
-    width: 70px;
-    font-size: 15px;
   }
 }

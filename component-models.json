@@ -136,8 +136,57 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Centrar",
+            "value": "centrar"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "name": "time",
+        "value": "",
+        "label": "Time",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description (Optional)",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "value": "",
+        "label": "Content (Optional)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "anterior",
+    "fields": [
+      {
+        "component": "text",
+        "name": "youtubeUrl",
+        "value": "",
+        "label": "YouTube URL",
+        "valueType": "string"
       }
     ]
   },
@@ -211,39 +260,6 @@
         "name": "date",
         "value": "",
         "label": "Date",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "accordion-item",
-    "fields": [
-      {
-        "component": "text",
-        "name": "time",
-        "value": "",
-        "label": "Time",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "title",
-        "value": "",
-        "label": "Title",
-        "valueType": "string"
-      },
-      {
-        "component": "richtext",
-        "name": "description",
-        "value": "",
-        "label": "Description (Optional)",
-        "valueType": "string"
-      },
-      {
-        "component": "richtext",
-        "name": "content",
-        "value": "",
-        "label": "Content (Optional)",
         "valueType": "string"
       }
     ]
