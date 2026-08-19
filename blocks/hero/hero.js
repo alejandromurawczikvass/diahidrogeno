@@ -16,29 +16,19 @@ export default function decorate(block) {
 
   const rows = [...block.children];
 
-  // Process rows to extract title, image, and date
+  // Read the authored fields in model order: title, image, date.
   let titleCell = null;
   let imageCell = null;
   let dateCell = null;
   let backgroundImageUrl = null;
 
-  // First row typically has title and image
-  if (rows.length > 0) {
-    const firstRowCells = [...rows[0].children];
-    if (firstRowCells.length >= 1) {
-      titleCell = firstRowCells[0];
-    }
-    if (firstRowCells.length >= 2) {
-      imageCell = firstRowCells[1];
-    }
-  }
-
-  // Second row typically has date
-  if (rows.length > 1) {
-    const secondRowCells = [...rows[1].children];
-    if (secondRowCells.length >= 1) {
-      dateCell = secondRowCells[0];
-    }
+  const fields = rows.flatMap((row) => [...row.children]);
+  if (fields.length >= 3) {
+    [titleCell, imageCell, dateCell] = fields;
+  } else if (fields.length >= 2) {
+    [titleCell, imageCell] = fields;
+  } else if (fields.length === 1) {
+    [titleCell] = fields;
   }
 
   // Extract background image URL from imageCell

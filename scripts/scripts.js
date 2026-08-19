@@ -9,6 +9,7 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  toClassName,
 } from './aem.js';
 
 /**
@@ -109,12 +110,22 @@ export function decorateButtons(main) {
   });
 }
 
+function decorateDefaultContent(main) {
+  main.querySelectorAll('.title, .text').forEach((component) => {
+    component.querySelectorAll('[data-aue-prop="classes"], [data-aue-prop="style"]').forEach((field) => {
+      field.textContent.split(',').filter(Boolean).forEach((value) => {
+        component.classList.add(toClassName(value.trim()));
+      });
+    });
+  });
+}
+
 function addBackToTopButton() {
   const button = document.createElement('button');
   button.className = 'back-to-top';
   button.type = 'button';
   button.setAttribute('aria-label', 'Volver arriba');
-  button.innerHTML = '<span aria-hidden="true">&#8593;</span>';
+  button.innerHTML = '<span class="back-to-top-icon" aria-hidden="true"></span>';
 
   const updateVisibility = () => {
     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -140,6 +151,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateDefaultContent(main);
   decorateButtons(main);
   addBackToTopButton();
 }

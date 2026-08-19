@@ -43,12 +43,7 @@
 }
 
 .hero-home::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("../images/hero-bg-diadelhidrogenoenagas.jpg") center / cover no-repeat;
-  z-index: 1;
-  pointer-events: none;
+  content: none;
 }
 
 .hero-content {

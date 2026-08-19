@@ -60,7 +60,7 @@
 }
 
 @font-face {
-    font-family: MyriadProLight;
+    font-family: Myriad-Pro-Light;
     src:
         url("https://use.typekit.net/af/c630c3/000000000000000000017098/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3")
             format("woff2"),
@@ -74,7 +74,7 @@
 }
 
 @font-face {
-    font-family: MyriadProRegular;
+    font-family: Myriad-Pro-Regular;
     src:
         url("https://use.typekit.net/af/cafa63/00000000000000000001709a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
             format("woff2"),
@@ -88,7 +88,7 @@
 }
 
 @font-face {
-    font-family: MyriadProItalic;
+    font-family: Myriad-Pro-Italic;
     src:
         url("https://use.typekit.net/af/d32e26/00000000000000000001709b/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
             format("woff2"),
@@ -102,7 +102,7 @@
 }
 
 @font-face {
-    font-family: MyriadProSemibold;
+    font-family: Myriad-Pro-Semibold;
     src:
         url("https://use.typekit.net/af/80c5d0/00000000000000000001709c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3")
             format("woff2"),
@@ -116,7 +116,7 @@
 }
 
 @font-face {
-    font-family: MyriadProSemiboldItalic;
+    font-family: Myriad-Pro-Semibold-Italic;
     src:
         url("https://use.typekit.net/af/d50a1b/00000000000000000001709d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3")
             format("woff2"),
@@ -130,7 +130,7 @@
 }
 
 @font-face {
-    font-family: MyriadProBold;
+    font-family: Myriad-Pro-Bold;
     src:
         url("https://use.typekit.net/af/1b1b1e/00000000000000000001709e/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
             format("woff2"),
@@ -144,7 +144,7 @@
 }
 
 @font-face {
-    font-family: MyriadProBoldItalic;
+    font-family: Myriad-Pro-Bold-Italic;
     src:
         url("https://use.typekit.net/af/2e2357/00000000000000000001709f/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
             format("woff2"),
@@ -158,7 +158,7 @@
 }
 
 @font-face {
-    font-family: MyriadProCondensed;
+    font-family: Myriad-Pro-Condensed;
     src:
         url("https://use.typekit.net/af/f72c04/0000000000000000000170a4/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
             format("woff2"),
@@ -172,7 +172,7 @@
 }
 
 @font-face {
-    font-family: MyriadProCondensedItalic;
+    font-family: Myriad-Pro-Condensed-Italic;
     src:
         url("https://use.typekit.net/af/af66cf/0000000000000000000170a5/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3")
             format("woff2"),
@@ -186,7 +186,7 @@
 }
 
 @font-face {
-    font-family: MyriadProCondensedBold;
+    font-family: Myriad-Pro-Condensed-Bold;
     src:
         url("https://use.typekit.net/af/c63dde/0000000000000000000170a8/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
             format("woff2"),
@@ -200,7 +200,7 @@
 }
 
 @font-face {
-    font-family: MyriadProCondensedBoldItalic;
+    font-family: Myriad-Pro-Condensed-Bold-Italic;
     src:
         url("https://use.typekit.net/af/24a439/0000000000000000000170a9/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3")
             format("woff2"),
