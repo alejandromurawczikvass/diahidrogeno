@@ -26,10 +26,10 @@ export default function decorate(block) {
   if (rows.length > 0) {
     const firstRowCells = [...rows[0].children];
     if (firstRowCells.length >= 1) {
-      [titleCell] = firstRowCells;
+      titleCell = firstRowCells[0];
     }
     if (firstRowCells.length >= 2) {
-      [imageCell] = firstRowCells;
+      imageCell = firstRowCells[1];
     }
   }
 
@@ -37,7 +37,7 @@ export default function decorate(block) {
   if (rows.length > 1) {
     const secondRowCells = [...rows[1].children];
     if (secondRowCells.length >= 1) {
-      [dateCell] = secondRowCells;
+      dateCell = secondRowCells[0];
     }
   }
 
