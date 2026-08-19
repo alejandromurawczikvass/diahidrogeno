@@ -26,32 +26,32 @@ export default function decorate(block) {
       // Handle different cell configurations
       if (cells.length === 4) {
         // Time | Title | Description | Content
-        timeContent = cells[0];
-        titleContent = cells[1];
-        descriptionContent = cells[2];
-        contentCell = cells[3];
+        [timeContent] = cells;
+        [titleContent] = cells;
+        [descriptionContent] = cells;
+        [contentCell] = cells;
       } else if (cells.length === 3) {
         // Time | Title | Content OR Time | Title | Description
-        timeContent = cells[0];
-        titleContent = cells[1];
+        [timeContent] = cells;
+        [titleContent] = cells;
         // Check if third cell is description or content
         // If it's short and has no complex elements, assume description
         const thirdCellText = cells[2].textContent.trim();
         if (thirdCellText.length < 200 && cells[2].children.length <= 2) {
-          descriptionContent = cells[2];
+          [descriptionContent] = cells;
         } else {
-          contentCell = cells[2];
+          [contentCell] = cells;
         }
       } else if (cells.length === 2) {
         // Time | Title+Description+Content or just Title | Content
         // Check if first cell looks like time (short, no complex elements)
         if (cells[0].textContent.length < 10) {
-          timeContent = cells[0];
-          titleContent = cells[1];
+          [timeContent] = cells;
+          [titleContent] = cells;
         } else {
           // No separate time, use title/content structure
-          titleContent = cells[0];
-          contentCell = cells[1];
+          [titleContent] = cells;
+          [contentCell] = cells;
         }
       }
 

@@ -3,16 +3,16 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const hero = document.createElement('div');
-  hero.className = 'hero hero--home';
+  hero.className = 'hero hero-home';
 
   const heroContent = document.createElement('div');
-  heroContent.className = 'hero__content';
+  heroContent.className = 'hero-content';
 
   const containerFull = document.createElement('div');
   containerFull.className = 'container-full';
 
   const heroGrid = document.createElement('div');
-  heroGrid.className = 'hero__grid';
+  heroGrid.className = 'hero-grid';
 
   const rows = [...block.children];
 
@@ -26,10 +26,10 @@ export default function decorate(block) {
   if (rows.length > 0) {
     const firstRowCells = [...rows[0].children];
     if (firstRowCells.length >= 1) {
-      titleCell = firstRowCells[0];
+      [titleCell] = firstRowCells;
     }
     if (firstRowCells.length >= 2) {
-      imageCell = firstRowCells[1];
+      [imageCell] = firstRowCells;
     }
   }
 
@@ -37,13 +37,12 @@ export default function decorate(block) {
   if (rows.length > 1) {
     const secondRowCells = [...rows[1].children];
     if (secondRowCells.length >= 1) {
-      dateCell = secondRowCells[0];
+      [dateCell] = secondRowCells;
     }
   }
 
   // Extract background image URL from imageCell
   if (imageCell) {
-    const picture = imageCell.querySelector('picture');
     const img = imageCell.querySelector('img');
 
     if (img) {
@@ -59,7 +58,7 @@ export default function decorate(block) {
   // Create hero__title
   if (titleCell) {
     const titleDiv = document.createElement('div');
-    titleDiv.className = 'hero__title';
+    titleDiv.className = 'hero-title';
     moveInstrumentation(titleCell, titleDiv);
 
     const titleP = document.createElement('p');
@@ -73,7 +72,7 @@ export default function decorate(block) {
   // Create hero__wordmark
   if (imageCell) {
     const wordmarkDiv = document.createElement('div');
-    wordmarkDiv.className = 'hero__wordmark';
+    wordmarkDiv.className = 'hero-wordmark';
     moveInstrumentation(imageCell, wordmarkDiv);
 
     const picture = imageCell.querySelector('picture');
@@ -104,7 +103,7 @@ export default function decorate(block) {
   // Create hero__date
   if (dateCell) {
     const dateDiv = document.createElement('div');
-    dateDiv.className = 'hero__date';
+    dateDiv.className = 'hero-date';
     moveInstrumentation(dateCell, dateDiv);
 
     const dateP = document.createElement('p');

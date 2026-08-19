@@ -127,7 +127,7 @@
   padding: 12px 0;
   background-color: transparent;
   display: none;
-  animation: slideDown 0.3s ease-out;
+  animation: slide-down 0.3s ease-out;
   color: #707070;
   font-size: var(--body-font-size-s);
   line-height: 1.6;
@@ -137,22 +137,24 @@
   display: block;
 }
 
-@keyframes slideDown {
+@keyframes slide-down {
   from {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes slideUp {
+@keyframes slide-up {
   from {
     opacity: 1;
     transform: translateY(0);
   }
+
   to {
     opacity: 0;
     transform: translateY(-10px);
