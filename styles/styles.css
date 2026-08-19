@@ -15,9 +15,11 @@
   --background-color: white;
   --light-color: #f8f8f8;
   --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --text-color: #64666a;
+  --text-color-primary: #9cb700;
+  --text-color-primary-dark: #7a8c00;
+  --link-color: #9cb700;
+  --link-hover-color: #7a8c00;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -199,8 +201,8 @@ button.button:disabled {
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
+  border-color: var(--text-color-primary);
+  background-color: var(--text-color-primary);
   color: var(--background-color);
 }
 
@@ -208,9 +210,9 @@ a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+  border-color: var(--text-color-primary-dark);
+  background-color: var(--text-color-primary-dark);
+  color: var(--background-color);
 }
 
 a.button.primary[aria-disabled="true"],
@@ -237,7 +239,7 @@ button.button.secondary:hover,
 button.button.secondary:focus-visible {
   border-color: var(--dark-color);
   background-color: var(--light-color);
-  color: var(--dark-color);
+  color: var(--text-color-primary);
 }
 
 a.button.secondary[aria-disabled="true"],
@@ -248,7 +250,7 @@ button.button.secondary:disabled:hover,
 button.button.secondary:disabled:focus-visible {
   background-color: var(--light-color);
   border-color: var(--light-color);
-  color: var(--dark-color);
+  color: var(--text-color-primary-dark);
 }
 
 /* high-impact call-to-action */
@@ -275,7 +277,7 @@ button.button.accent:disabled:hover,
 button.button.accent:disabled:focus-visible {
   background-color: var(--light-color);
   border-color: var(--light-color);
-  color: var(--dark-color);
+  color: var(--text-color-primary-dark);
 }
 
 main img {
