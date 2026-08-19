@@ -229,7 +229,7 @@
     ]
   },
   {
-    "id": "customTitle",
+    "id": "customtitle",
     "fields": [
       {
         "component": "text",
