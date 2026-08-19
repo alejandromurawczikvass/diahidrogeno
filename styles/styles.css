@@ -318,6 +318,11 @@ main > .section.centrar {
   margin: 20px auto; 
 }
 
+main .title.centrar,
+main .text.centrar {
+  text-align: center;
+}
+
 main > .section:first-of-type {
   margin-top: 0;
 }
