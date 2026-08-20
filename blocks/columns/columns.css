@@ -46,6 +46,6 @@
         position: absolute;
         left: 50%;
         background: var(--text-color);
-        bottom: -10px;
+        bottom: 3px;
   }
 }
