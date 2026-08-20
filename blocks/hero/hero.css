@@ -5,8 +5,7 @@
 
 .hero {
   position: relative;
-  padding: 40px 24px;
-  min-height: 460px;
+  min-height: 380px;
 }
 
 .hero h1 {
@@ -37,8 +36,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 400px;
+  min-height: auto;
   overflow: hidden;
 }
 
@@ -55,7 +53,6 @@
 .container-full {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
 .hero-grid {
@@ -74,7 +71,7 @@
   font-size: 28px;
   font-weight: 600;
   color: var(--light-color);
-  font-family: var(--heading-font-family);
+  font-family: var(--hashtag-font-family);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -108,46 +105,36 @@
 .title-date {
   margin: 0;
   font-size: 36px;
-  font-weight: 600;
-  color: #131313;
+  font-weight: 400;
   font-family: var(--heading-font-family);
   letter-spacing: 2px;
+  color: var(--light-color);
 }
 
 @media (width >= 900px) {
-  .hero-home {
-    padding: 80px 32px;
-    min-height: 500px;
-  }
-
   .container-full {
     padding: 0 32px;
   }
 
   .hero-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 60px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 60px;
   }
 
   .hero-title {
-    grid-column: 1;
+    width: 100%;
   }
 
   .hero-wordmark {
-    grid-column: 2;
     max-width: 100%;
+    margin-left: auto;
   }
 
   .hero-date {
-    grid-column: 3;
+    width: 100%;
   }
 
-  .title-hastag {
-    font-size: 32px;
-  }
-
-  .title-date {
-    font-size: 42px;
-  }
 }
