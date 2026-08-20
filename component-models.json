@@ -140,6 +140,10 @@
           {
             "name": "Centrar",
             "value": "centrar"
+          },
+          {
+            "name": "Centrar max",
+            "value": "centrar-max"
           }
         ]
       }
