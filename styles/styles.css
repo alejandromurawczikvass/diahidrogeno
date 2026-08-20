@@ -116,16 +116,14 @@ h6 {
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
+h2 { 
+  font-size: var(--heading-font-size-xl); 
+  color: var(--text-color-primary);
+  text-align: center; }
 h3 { font-size: var(--heading-font-size-l); }
 h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
-
-h2{
-  color: var(--text-color-primary);
-  text-align: center;
-}
 
 p,
 dl,
