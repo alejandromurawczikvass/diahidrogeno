@@ -210,6 +210,13 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description (Modal)",
+        "valueType": "string"
       }
     ]
   },

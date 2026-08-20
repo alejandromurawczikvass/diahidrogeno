@@ -13,25 +13,27 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  cursor: pointer;
 }
 
-.cards > ul > li:hover {
-  filter: grayscale(0);
+.cards > ul > li:focus-visible {
+  outline: 2px solid var(--text-color-primary);
+  outline-offset: 4px;
 }
 
 .cards .cards-card-body {
   margin: 16px;
 }
 
-.cards .cards-card-body p:first-child {
-  font-size: var(--body-font-size-m);
-  color: var(--text-color-primary);
-}
-
 .cards .cards-card-body p{
   font-size: var(--body-font-size-xs);
   color: var(--text-color);
   margin: 0;
+}
+
+.cards .cards-card-body p:first-child {
+  font-size: var(--body-font-size-m);
+  color: var(--text-color-primary);
 }
 
 .cards .cards-card-image {
@@ -47,4 +49,82 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+}
+
+.cards > ul > li:hover .cards-card-image,
+.cards > ul > li:focus-visible .cards-card-image {
+  filter: grayscale(0);
+}
+
+.cards .cards-card-image img {
+  transition: transform 180ms ease;
+}
+
+.cards > ul > li:hover .cards-card-image img,
+.cards > ul > li:focus-visible .cards-card-image img {
+  transform: scale(1.08);
+}
+
+.cards-modal {
+  width: min(90vw, 720px);
+  max-width: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.cards-modal::backdrop {
+  background: rgb(0 0 0 / 65%);
+}
+
+.cards-modal-container {
+  position: relative;
+  padding: 32px;
+  background: var(--background-color);
+}
+
+.cards-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--text-color);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cards-modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.speaker-modal {
+  text-align: center;
+}
+
+.speaker-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.speaker-modal .card-title {
+  margin-top: 20px;
+  color: var(--text-color-primary);
+  font-size: var(--body-font-size-m);
+}
+
+.speaker-modal .speaker-details,
+.speaker-modal .speaker-description {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.speaker-modal .speaker-links {
+  margin-top: 20px;
 }
