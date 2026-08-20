@@ -18,7 +18,8 @@
       "fragment",
       "accordion",
       "anteriores",
-      "customtitle"
+      "customtitle",
+      "gallery"
     ]
   },
   {
@@ -60,6 +61,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "gallery",
+    "components": [
+      "gallery-image"
     ]
   }
 ]
