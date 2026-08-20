@@ -34,6 +34,9 @@
     flex: 1;
     order: unset;
   }
+  .columns.columns-2-cols{
+    position: relative;
+  }
 
   .columns.columns-2-cols::before{
         content: '';
