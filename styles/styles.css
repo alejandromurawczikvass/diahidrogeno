@@ -123,6 +123,7 @@ h6 { font-size: var(--heading-font-size-xs); }
 
 h2{
   color: var(--text-color-primary);
+  text-align: center;
 }
 
 p,
@@ -186,8 +187,9 @@ a:hover {
   color: var(--background-color);
   opacity: 0;
   pointer-events: none;
-  transform: translateY(8px);
+  transform: translateY(8px) scale(1);
   transition: opacity 180ms ease, transform 180ms ease;
+  cursor: pointer;
 }
 
 .back-to-top.is-visible {
@@ -196,12 +198,23 @@ a:hover {
   transform: translateY(0);
 }
 
+.back-to-top.is-visible:hover {
+  background-color: var(--text-color-primary-dark);
+  box-shadow: 0 0 8px var(--text-color-primary-dark);
+  transform: scale(1.1);
+}
+
 .back-to-top-icon {
   width: 10px;
   height: 10px;
   border-top: 2px solid currentcolor;
   border-left: 2px solid currentcolor;
-  transform: translateY(3px) rotate(45deg);
+  transform: translateY(20px) translateX(16px) rotate(45deg) scale(1);
+  transition: transform 180ms ease;
+}
+
+.back-to-top-icon:hover{
+  transform: translateY(20px) translateX(16px) rotate(45deg) scale(1.2);
 }
 
 /* buttons */

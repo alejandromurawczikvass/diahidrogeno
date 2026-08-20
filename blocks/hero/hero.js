@@ -16,24 +16,29 @@ export default function decorate(block) {
 
   const rows = [...block.children];
 
-  // Read the authored fields in model order: title, image, date.
+  // Read the authored fields in model order: title, background image, foreground image, date.
   let titleCell = null;
-  let imageCell = null;
+  let backgroundImageCell = null;
+  let foregroundImageCell = null;
   let dateCell = null;
   let backgroundImageUrl = null;
 
   const fields = rows.flatMap((row) => [...row.children]);
-  if (fields.length >= 3) {
-    [titleCell, imageCell, dateCell] = fields;
+  if (fields.length >= 4) {
+    [titleCell, backgroundImageCell, foregroundImageCell, dateCell] = fields;
+  } else if (fields.length >= 3) {
+    [titleCell, backgroundImageCell, dateCell] = fields;
+    foregroundImageCell = backgroundImageCell;
   } else if (fields.length >= 2) {
-    [titleCell, imageCell] = fields;
+    [titleCell, backgroundImageCell] = fields;
+    foregroundImageCell = backgroundImageCell;
   } else if (fields.length === 1) {
     [titleCell] = fields;
   }
 
-  // Extract background image URL from imageCell
-  if (imageCell) {
-    const img = imageCell.querySelector('img');
+  // Extract background image URL from the authored background image.
+  if (backgroundImageCell) {
+    const img = backgroundImageCell.querySelector('img');
 
     if (img) {
       backgroundImageUrl = img.src;
@@ -60,13 +65,13 @@ export default function decorate(block) {
   }
 
   // Create hero__wordmark
-  if (imageCell) {
+  if (foregroundImageCell) {
     const wordmarkDiv = document.createElement('div');
     wordmarkDiv.className = 'hero-wordmark';
-    moveInstrumentation(imageCell, wordmarkDiv);
+    moveInstrumentation(foregroundImageCell, wordmarkDiv);
 
-    const picture = imageCell.querySelector('picture');
-    const img = imageCell.querySelector('img');
+    const picture = foregroundImageCell.querySelector('picture');
+    const img = foregroundImageCell.querySelector('img');
 
     if (picture) {
       const optimizedPic = createOptimizedPicture(
@@ -82,8 +87,8 @@ export default function decorate(block) {
       wordmarkDiv.append(img);
     } else {
       // Move any content from cell
-      while (imageCell.firstChild) {
-        wordmarkDiv.append(imageCell.firstChild);
+      while (foregroundImageCell.firstChild) {
+        wordmarkDiv.append(foregroundImageCell.firstChild);
       }
     }
 

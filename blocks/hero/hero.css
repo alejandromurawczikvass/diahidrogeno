@@ -84,6 +84,17 @@
   max-width: 400px;
 }
 
+.hero-wordmark picture {
+  position: static;
+  z-index: auto;
+  display: block;
+}
+
+.hero-wordmark img {
+  object-fit: contain;
+  height: auto;
+}
+
 .img-wordmark {
   width: 100%;
   height: auto;

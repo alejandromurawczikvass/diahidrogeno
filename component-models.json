@@ -385,8 +385,15 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
-        "label": "Wordmark Image",
+        "name": "backgroundImage",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "foregroundImage",
+        "label": "Foreground Image",
         "multi": false
       },
       {
