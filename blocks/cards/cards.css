@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
   cursor: pointer;
 }
@@ -74,30 +74,13 @@
 }
 
 .cards-modal::backdrop {
-  background: rgb(0 0 0 / 65%);
+  background: color-mix(in srgb, var(--text-color-primary) 50%, transparent);
 }
 
 .cards-modal-container {
   position: relative;
   padding: 32px;
   background: var(--background-color);
-}
-
-.cards-modal-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
-  border: 0;
-  background: transparent;
-  color: var(--text-color);
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.cards-modal-content {
   max-height: 80vh;
   overflow-y: auto;
 }
@@ -123,6 +106,7 @@
 .speaker-modal .speaker-description {
   margin-top: 16px;
   text-align: left;
+  color: var(--text-color);
 }
 
 .speaker-modal .speaker-links {

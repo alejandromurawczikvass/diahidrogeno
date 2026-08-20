@@ -14,12 +14,6 @@ function createModal(card, index) {
   const container = document.createElement('div');
   container.className = 'cards-modal-container';
 
-  const closeButton = document.createElement('button');
-  closeButton.className = 'cards-modal-close';
-  closeButton.type = 'button';
-  closeButton.setAttribute('aria-label', 'Close');
-  closeButton.textContent = 'x';
-
   const content = document.createElement('div');
   content.className = 'cards-modal-content';
 
@@ -59,10 +53,9 @@ function createModal(card, index) {
   modalCard.append(links);
 
   content.append(modalCard);
-  container.append(closeButton, content);
+  container.append(content);
   dialog.append(container);
 
-  closeButton.addEventListener('click', () => closeModal(dialog, dialog.trigger));
   dialog.addEventListener('click', (event) => {
     if (event.target === dialog) closeModal(dialog, dialog.trigger);
   });
