@@ -79,7 +79,7 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--body-font-family);
-  font-size: var(--body-font-size-m);
+  font-size: var(--body-font-size-xs);
   line-height: 1.5;
 }
 
@@ -380,6 +380,10 @@ main > .section:first-of-type {
 }
 
 @media (width >= 900px) {
+  body{
+    font-size: var(--body-font-size-m);
+  }
+
   main > .section > div {
     padding: 0 32px;
   }

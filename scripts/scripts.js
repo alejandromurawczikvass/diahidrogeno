@@ -121,6 +121,12 @@ function decorateDefaultContent(main) {
 }
 
 function addBackToTopButton() {
+  const existingButtons = [...document.querySelectorAll('.back-to-top')];
+  if (existingButtons.length) {
+    existingButtons.slice(1).forEach((existingButton) => existingButton.remove());
+    return;
+  }
+
   const button = document.createElement('button');
   button.className = 'back-to-top';
   button.type = 'button';
