@@ -6,6 +6,18 @@ function closeGallery(dialog, trigger) {
   trigger?.focus();
 }
 
+function getImageSource(row) {
+  const image = row.querySelector('img');
+  if (image) return { src: image.currentSrc || image.src, alt: image.alt };
+
+  const reference = row.querySelector('a[href]');
+  if (!reference) return null;
+  return {
+    src: reference.href,
+    alt: reference.textContent.trim() || 'Gallery image',
+  };
+}
+
 function createGalleryDialog(images, block) {
   const dialog = document.createElement('dialog');
   dialog.className = 'gallery-modal';
@@ -88,29 +100,20 @@ export default function decorate(block) {
   [...block.children].forEach((row) => {
     const item = document.createElement('li');
     moveInstrumentation(row, item);
-    const picture = row.querySelector('picture');
-    const image = row.querySelector('img');
-    const imageReference = row.querySelector('a[href]');
-    if (!image && !imageReference) return;
+    const imageSource = getImageSource(row);
+    if (!imageSource) return;
 
-    const sourceImage = image || document.createElement('img');
-    if (!image) {
-      sourceImage.src = imageReference.href;
-      sourceImage.alt = imageReference.textContent.trim() || 'Gallery image';
-    }
-
-    if (picture) {
-      const optimizedPicture = createOptimizedPicture(
-        sourceImage.src,
-        sourceImage.alt || 'Gallery image',
-        false,
-        [{ width: '1200' }],
-      );
-      moveInstrumentation(sourceImage, optimizedPicture.querySelector('img'));
-      item.append(optimizedPicture);
-    } else {
-      item.append(sourceImage);
-    }
+    const optimizedPicture = createOptimizedPicture(
+      imageSource.src,
+      imageSource.alt || 'Gallery image',
+      false,
+      [{ width: '1200' }],
+    );
+    moveInstrumentation(
+      row.querySelector('img') || row.querySelector('a[href]'),
+      optimizedPicture.querySelector('img'),
+    );
+    item.append(optimizedPicture);
 
     const renderedImage = item.querySelector('img');
     images.push({

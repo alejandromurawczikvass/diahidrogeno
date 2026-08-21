@@ -120,7 +120,9 @@ h1 { font-size: var(--heading-font-size-xxl); }
 h2 { 
   font-size: var(--heading-font-size-xl); 
   color: var(--text-color-primary);
-  text-align: center; }
+  text-align: center; 
+  font-weight: 100;
+}
 
 h3 { font-size: var(--heading-font-size-l); }
 h4 { font-size: var(--heading-font-size-m); }
@@ -135,6 +137,7 @@ pre,
 blockquote {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
+  font-weight: 100;
 }
 
 code,
