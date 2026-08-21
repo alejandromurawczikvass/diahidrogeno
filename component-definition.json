@@ -219,21 +219,6 @@
           }
         },
         {
-          "title": "Gallery Image",
-          "id": "gallery-image",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block/item",
-                "template": {
-                  "name": "Gallery Image",
-                  "model": "gallery-image"
-                }
-              }
-            }
-          }
-        },
-        {
           "title": "Hero",
           "id": "hero",
           "plugins": {
