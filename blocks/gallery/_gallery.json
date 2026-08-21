@@ -31,12 +31,25 @@
       }
     }
   ],
-  "models": [],
+  "models": [
+    {
+      "id": "image",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        }
+      ]
+    }
+  ],
   "filters": [
     {
       "id": "gallery",
       "components": [
-        "gallery-image"
+        "image"
       ]
     }
   ]
