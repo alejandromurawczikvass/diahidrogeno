@@ -1,30 +1,30 @@
 {
   "definitions": [
     {
-      "title": "Gallery",
-      "id": "gallery",
+      "title": "Carousel",
+      "id": "carousel",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Gallery",
-              "filter": "gallery"
+              "name": "Carousel",
+              "filter": "carousel"
             }
           }
         }
       }
     },
     {
-      "title": "Image",
-      "id": "gallery-image",
+      "title": "Carousel Item",
+      "id": "carousel-item",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
-              "name": "Image",
-              "model": "gallery-image"
+              "name": "Carousel Item",
+              "model": "carousel-item"
             }
           }
         }
@@ -33,27 +33,37 @@
   ],
   "models": [
     {
-      "id": "gallery-image",
+      "id": "carousel-item",
       "fields": [
         {
           "component": "reference",
+          "valueType": "string",
           "name": "image",
           "label": "Image",
           "multi": false
         },
         {
-          "component": "text",
-          "name": "imageAlt",
-          "label": "Alt Text"
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "description",
+          "value": "",
+          "label": "Description (Modal)",
+          "valueType": "string"
         }
       ]
     }
   ],
   "filters": [
     {
-      "id": "gallery",
+      "id": "carousel",
       "components": [
-        "gallery-image"
+        "carousel-item"
       ]
     }
   ]

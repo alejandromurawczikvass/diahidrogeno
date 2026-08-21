@@ -18,7 +18,7 @@
       "fragment",
       "accordion",
       "anteriores",
-      "gallery"
+      "carousel"
     ]
   },
   {
@@ -48,6 +48,12 @@
     ]
   },
   {
+    "id": "carousel",
+    "components": [
+      "carousel-item"
+    ]
+  },
+  {
     "id": "columns",
     "components": [
       "column"
@@ -60,12 +66,6 @@
       "image",
       "button",
       "title"
-    ]
-  },
-  {
-    "id": "gallery",
-    "components": [
-      "gallery-image"
     ]
   }
 ]
