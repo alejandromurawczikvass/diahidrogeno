@@ -13,27 +13,19 @@ function createModal(cards) {
   const container = document.createElement('div');
   container.className = 'carousel-modal-container';
 
-  const closeButton = document.createElement('button');
-  closeButton.className = 'carousel-modal-close';
-  closeButton.type = 'button';
-  closeButton.setAttribute('aria-label', 'Close carousel');
-  closeButton.textContent = 'x';
-
   const previousButton = document.createElement('button');
   previousButton.className = 'carousel-modal-previous';
   previousButton.type = 'button';
   previousButton.setAttribute('aria-label', 'Previous image');
-  previousButton.textContent = '<';
+  const previousIcon = document.createElement('span');
+  previousButton.append(previousIcon);
 
   const nextButton = document.createElement('button');
   nextButton.className = 'carousel-modal-next';
   nextButton.type = 'button';
   nextButton.setAttribute('aria-label', 'Next image');
-  nextButton.textContent = '>';
-
-  const counter = document.createElement('div');
-  counter.className = 'carousel-modal-counter';
-  counter.setAttribute('aria-live', 'polite');
+  const nextIcon = document.createElement('span');
+  nextButton.append(nextIcon);
 
   const slides = document.createElement('div');
   slides.className = 'carousel-modal-slides';
@@ -51,12 +43,10 @@ function createModal(cards) {
     slides.querySelectorAll('.carousel-modal-slide').forEach((slide, slideIndex) => {
       slide.hidden = slideIndex !== activeIndex;
     });
-    counter.textContent = `${activeIndex + 1} / ${cards.length}`;
   };
 
   const changeSlide = (amount) => updateSlide(activeIndex + amount);
 
-  closeButton.addEventListener('click', () => closeModal(dialog));
   previousButton.addEventListener('click', () => changeSlide(-1));
   nextButton.addEventListener('click', () => changeSlide(1));
   dialog.addEventListener('click', (event) => {
@@ -74,7 +64,7 @@ function createModal(cards) {
     if (!dialog.open) dialog.showModal();
   };
 
-  container.append(closeButton, previousButton, slides, nextButton, counter);
+  container.append(previousButton, slides, nextButton);
   dialog.append(container);
   updateSlide(0);
 

@@ -1,140 +1,143 @@
 .hero-container .hero-wrapper {
-  max-width: unset;
-  padding: 0;
+    max-width: unset;
+    padding: 0;
 }
 
 .hero {
-  position: relative;
-  min-height: 380px;
+    position: relative;
+    min-height: 380px;
 }
 
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--background-color);
 }
 
 .hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    object-fit: cover;
+    box-sizing: border-box;
 }
 
 .hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 /* Hero Grid Layout */
 .hero-home {
-  padding: 60px 24px;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: auto;
-  overflow: hidden;
+    padding: 60px 24px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: auto;
+    overflow: hidden;
 }
 
 .hero-home::before {
-  content: none;
+    content: none;
 }
 
 .hero-content {
-  width: 100%;
-  position: relative;
-  z-index: 2;
+    width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .container-full {
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  align-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
 }
 
 .hero-title {
-  grid-column: 1;
+    grid-column: 1;
 }
 
 .title-hastag {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--light-color);
-  font-family: var(--hashtag-font-family);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--light-color);
+    font-family: var(--hashtag-font-family);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .hero-wordmark {
-  grid-column: 1;
-  max-width: 400px;
+    grid-column: 1;
+    max-width: 400px;
 }
 
 .hero-wordmark picture {
-  position: static;
-  z-index: auto;
-  display: block;
+    position: static;
+    z-index: auto;
+    display: block;
 }
 
 .hero-wordmark img {
-  object-fit: contain;
-  height: auto;
+    object-fit: contain;
+    height: auto;
 }
 
 .img-wordmark {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .hero-date {
-  grid-column: 1;
+    grid-column: 1;
 }
 
 .title-date {
-  margin: 0;
-  font-size: 36px;
-  font-weight: 400;
-  font-family: var(--heading-font-family);
-  letter-spacing: 2px;
-  color: var(--light-color);
+    margin: 0;
+    font-size: 36px;
+    font-weight: 400;
+    font-family: var(--heading-font-family);
+    letter-spacing: 2px;
+    color: var(--light-color);
 }
 
 @media (width >= 900px) {
-  .container-full {
-    padding: 0 32px;
-  }
+    .hero-container {
+        padding-top: 117px;
+    }
 
-  .hero-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-  }
+    .container-full {
+        padding: 0 32px;
+    }
 
-  .hero-title {
-    width: 100%;
-  }
+    .hero-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+    }
 
-  .hero-wordmark {
-    max-width: 100%;
-    margin-left: auto;
-  }
+    .hero-title {
+        width: 100%;
+    }
 
-  .hero-date {
-    width: 100%;
-  }
+    .hero-wordmark {
+        max-width: 100%;
+        margin-left: auto;
+    }
 
+    .hero-date {
+        width: 100%;
+    }
 }
