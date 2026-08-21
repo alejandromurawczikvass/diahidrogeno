@@ -24,34 +24,33 @@ export default function decorate(block) {
       let contentCell = null;
 
       // Handle different cell configurations
+      // Handle different cell configurations
       if (cells.length === 4) {
         // Time | Title | Description | Content
-        timeContent = cells[0];
-        titleContent = cells[1];
-        descriptionContent = cells[2];
-        contentCell = cells[3];
+        [timeContent, titleContent, descriptionContent, contentCell] = cells;
       } else if (cells.length === 3) {
         // Time | Title | Content OR Time | Title | Description
-        timeContent = cells[0];
-        titleContent = cells[1];
-        // Check if third cell is description or content
-        // If it's short and has no complex elements, assume description
-        const thirdCellText = cells[2].textContent.trim();
-        if (thirdCellText.length < 200 && cells[2].children.length <= 2) {
-          descriptionContent = cells[2];
+        [timeContent, titleContent] = cells;
+
+        const [, , thirdCell] = cells;
+        const thirdCellText = thirdCell.textContent.trim();
+
+        if (thirdCellText.length < 200 && thirdCell.children.length <= 2) {
+          descriptionContent = thirdCell;
         } else {
-          contentCell = cells[2];
+          contentCell = thirdCell;
         }
       } else if (cells.length === 2) {
         // Time | Title+Description+Content or just Title | Content
-        // Check if first cell looks like time (short, no complex elements)
-        if (cells[0].textContent.length < 10) {
-          timeContent = cells[0];
-          titleContent = cells[1];
+        const [firstCell, secondCell] = cells;
+
+        if (firstCell.textContent.length < 10) {
+          timeContent = firstCell;
+          titleContent = secondCell;
         } else {
           // No separate time, use title/content structure
-          titleContent = cells[0];
-          contentCell = cells[1];
+          titleContent = firstCell;
+          contentCell = secondCell;
         }
       }
 

@@ -70,7 +70,7 @@ function createGalleryDialog(images, block) {
   dialog.openAt = (index, trigger) => {
     dialog.trigger = trigger;
     updateImage(index);
-    dialog.showModal();
+    if (!dialog.open) dialog.showModal();
   };
 
   container.append(closeButton, previousButton, image, nextButton, counter);
@@ -90,19 +90,26 @@ export default function decorate(block) {
     moveInstrumentation(row, item);
     const picture = row.querySelector('picture');
     const image = row.querySelector('img');
-    if (!image) return;
+    const imageReference = row.querySelector('a[href]');
+    if (!image && !imageReference) return;
+
+    const sourceImage = image || document.createElement('img');
+    if (!image) {
+      sourceImage.src = imageReference.href;
+      sourceImage.alt = imageReference.textContent.trim() || 'Gallery image';
+    }
 
     if (picture) {
       const optimizedPicture = createOptimizedPicture(
-        image.src,
-        image.alt || 'Gallery image',
+        sourceImage.src,
+        sourceImage.alt || 'Gallery image',
         false,
         [{ width: '1200' }],
       );
-      moveInstrumentation(image, optimizedPicture.querySelector('img'));
+      moveInstrumentation(sourceImage, optimizedPicture.querySelector('img'));
       item.append(optimizedPicture);
     } else {
-      item.append(image);
+      item.append(sourceImage);
     }
 
     const renderedImage = item.querySelector('img');
@@ -114,13 +121,13 @@ export default function decorate(block) {
     list.append(item);
   });
 
-  const dialog = createGalleryDialog(images, block);
+  const dialog = images.length ? createGalleryDialog(images, block) : null;
   list.querySelectorAll('li').forEach((item) => {
     item.setAttribute('tabindex', '0');
     item.setAttribute('role', 'button');
     item.setAttribute('aria-label', `Open image ${Number(item.dataset.galleryIndex) + 1}`);
     const openGallery = () => {
-      dialog.openAt(Number(item.dataset.galleryIndex), item);
+      dialog?.openAt(Number(item.dataset.galleryIndex), item);
     };
     item.addEventListener('click', openGallery);
     item.addEventListener('keydown', (event) => {
@@ -131,5 +138,6 @@ export default function decorate(block) {
     });
   });
 
-  block.replaceChildren(list, dialog);
+  block.replaceChildren(list);
+  if (dialog) block.append(dialog);
 }
