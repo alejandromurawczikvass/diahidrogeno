@@ -227,7 +227,7 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Image",
-                  "model": "image"
+                  "model": "gallery-image"
                 }
               }
             }
