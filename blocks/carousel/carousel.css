@@ -110,10 +110,12 @@ main > .section .carousel-wrapper {
   border-left: 2px solid currentcolor;
   position: relative;
 }
+
 .carousel-modal-previous span{
   left: 2px;
   transform: rotate(-45deg);
 }
+
 .carousel-modal-next span{
   right: 2px;
   transform: rotate(135deg);
