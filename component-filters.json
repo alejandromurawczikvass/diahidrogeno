@@ -74,9 +74,5 @@
     "components": [
       "red"
     ]
-  },
-  {
-    "id": "red",
-    "components": []
   }
 ]
