@@ -1,4 +1,4 @@
-.redes-sociales > ul {
+.redes > ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -7,7 +7,7 @@
   gap: 24px;
 }
 
-.redes-sociales > ul > li {
+.redes > ul > li {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,27 +16,27 @@
   cursor: pointer;
 }
 
-.redes-sociales > ul > li:focus-visible {
+.redes > ul > li:focus-visible {
   outline: 2px solid var(--text-color-primary);
   outline-offset: 4px;
 }
 
-.redes-sociales .redes-sociales-card-body {
+.redes .redes-card-body {
   margin: 16px;
 }
 
-.redes-sociales .redes-sociales-card-body p {
+.redes .redes-card-body p {
   font-size: var(--body-font-size-xs);
   color: var(--text-color);
   margin: 0;
 }
 
-.redes-sociales .redes-sociales-card-body p:first-child {
+.redes .redes-card-body p:first-child {
   font-size: var(--body-font-size-m);
   color: var(--text-color-primary);
 }
 
-.redes-sociales .redes-sociales-card-image {
+.redes .redes-card-image {
   line-height: 0;
   height: 200px;
   width: 200px;
@@ -45,27 +45,27 @@
   filter: grayscale(1);
 }
 
-.redes-sociales > ul > li img {
+.redes > ul > li img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
-.redes-sociales > ul > li:hover .redes-sociales-card-image,
-.redes-sociales > ul > li:focus-visible .redes-sociales-card-image {
+.redes > ul > li:hover .redes-card-image,
+.redes > ul > li:focus-visible .redes-card-image {
   filter: grayscale(0);
 }
 
-.redes-sociales .redes-sociales-card-image img {
+.redes .redes-card-image img {
   transition: transform 180ms ease;
 }
 
-.redes-sociales > ul > li:hover .redes-sociales-card-image img,
-.redes-sociales > ul > li:focus-visible .redes-sociales-card-image img {
+.redes > ul > li:hover .redes-card-image img,
+.redes > ul > li:focus-visible .redes-card-image img {
   transform: scale(1.08);
 }
 
-.redes-sociales-modal {
+.redes-modal {
   width: min(90vw, 720px);
   max-width: none;
   padding: 0;
@@ -73,11 +73,11 @@
   background: transparent;
 }
 
-.redes-sociales-modal::backdrop {
+.redes-modal::backdrop {
   background: color-mix(in srgb, var(--text-color-primary) 50%, transparent);
 }
 
-.redes-sociales-modal-container {
+.redes-modal-container {
   position: relative;
   padding: 32px;
   background: var(--background-color);
@@ -85,30 +85,30 @@
   overflow-y: auto;
 }
 
-.redes-sociales .speaker-modal {
+.redes .speaker-modal {
   text-align: center;
 }
 
-.redes-sociales .speaker-picture {
+.redes .speaker-picture {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.redes-sociales .speaker-modal .card-title {
+.redes .speaker-modal .card-title {
   margin-top: 20px;
   color: var(--text-color-primary);
   font-size: var(--body-font-size-m);
 }
 
-.redes-sociales .speaker-modal .speaker-details,
-.redes-sociales .speaker-modal .speaker-description {
+.redes .speaker-modal .speaker-details,
+.redes .speaker-modal .speaker-description {
   margin-top: 16px;
   text-align: left;
   color: var(--text-color);
 }
 
-.redes-sociales .speaker-modal .speaker-links {
+.redes .speaker-modal .speaker-links {
   margin-top: 20px;
 }

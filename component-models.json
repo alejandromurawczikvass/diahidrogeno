@@ -309,7 +309,7 @@
     ]
   },
   {
-    "id": "redes-sociales-card",
+    "id": "redes-card",
     "fields": [
       {
         "component": "reference",
