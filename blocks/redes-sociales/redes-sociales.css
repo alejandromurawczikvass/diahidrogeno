@@ -1,0 +1,114 @@
+.redes-sociales > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
+  gap: 24px;
+}
+
+.redes-sociales > ul > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  cursor: pointer;
+}
+
+.redes-sociales > ul > li:focus-visible {
+  outline: 2px solid var(--text-color-primary);
+  outline-offset: 4px;
+}
+
+.redes-sociales .redes-sociales-card-body {
+  margin: 16px;
+}
+
+.redes-sociales .redes-sociales-card-body p {
+  font-size: var(--body-font-size-xs);
+  color: var(--text-color);
+  margin: 0;
+}
+
+.redes-sociales .redes-sociales-card-body p:first-child {
+  font-size: var(--body-font-size-m);
+  color: var(--text-color-primary);
+}
+
+.redes-sociales .redes-sociales-card-image {
+  line-height: 0;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  filter: grayscale(1);
+}
+
+.redes-sociales > ul > li img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.redes-sociales > ul > li:hover .redes-sociales-card-image,
+.redes-sociales > ul > li:focus-visible .redes-sociales-card-image {
+  filter: grayscale(0);
+}
+
+.redes-sociales .redes-sociales-card-image img {
+  transition: transform 180ms ease;
+}
+
+.redes-sociales > ul > li:hover .redes-sociales-card-image img,
+.redes-sociales > ul > li:focus-visible .redes-sociales-card-image img {
+  transform: scale(1.08);
+}
+
+.redes-sociales-modal {
+  width: min(90vw, 720px);
+  max-width: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.redes-sociales-modal::backdrop {
+  background: color-mix(in srgb, var(--text-color-primary) 50%, transparent);
+}
+
+.redes-sociales-modal-container {
+  position: relative;
+  padding: 32px;
+  background: var(--background-color);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.redes-sociales .speaker-modal {
+  text-align: center;
+}
+
+.redes-sociales .speaker-picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.redes-sociales .speaker-modal .card-title {
+  margin-top: 20px;
+  color: var(--text-color-primary);
+  font-size: var(--body-font-size-m);
+}
+
+.redes-sociales .speaker-modal .speaker-details,
+.redes-sociales .speaker-modal .speaker-description {
+  margin-top: 16px;
+  text-align: left;
+  color: var(--text-color);
+}
+
+.redes-sociales .speaker-modal .speaker-links {
+  margin-top: 20px;
+}

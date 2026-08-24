@@ -182,6 +182,10 @@ header nav .nav-sections ul {
   font-size: var(--body-font-size-s);
 }
 
+header nav .language-switcher-menu li {
+  padding: 8px 16px;
+}
+
 header nav .nav-sections ul > li {
   font-weight: 500;
 }
@@ -325,19 +329,16 @@ header nav .language-switcher-menu {
   padding: 0;
 }
 
-header nav .language-switcher-menu li {
-  padding: 8px 16px;
-}
 header nav .language-switcher-menu li:hover{
   background-color: var(--link-color);
 }
 
-header nav .language-switcher-menu li:hover a{
-  color: var(--light-color);
-}
-
 header nav .language-switcher-menu a {
   display: block;
+}
+
+header nav .language-switcher-menu li:hover a{
+  color: var(--light-color);
 }
 
 @media (width < 900px) {

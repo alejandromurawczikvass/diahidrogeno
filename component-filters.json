@@ -67,5 +67,11 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "redes-sociales",
+    "components": [
+      "redes-sociales-card"
+    ]
   }
 ]
