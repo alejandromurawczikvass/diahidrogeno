@@ -43,18 +43,9 @@
           "multi": false
         },
         {
-          "component": "richtext",
-          "name": "text",
-          "value": "",
-          "label": "Text",
-          "valueType": "string"
-        },
-        {
-          "component": "richtext",
-          "name": "description",
-          "value": "",
-          "label": "Description (Modal)",
-          "valueType": "string"
+          "component": "aem-content",
+          "name": "link",
+          "label": "Link"
         }
       ]
     }

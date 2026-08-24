@@ -1,114 +1,29 @@
-.redes > ul {
+.redes .list-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
 }
 
-.redes > ul > li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  text-align: center;
-  cursor: pointer;
-}
-
-.redes > ul > li:focus-visible {
-  outline: 2px solid var(--text-color-primary);
-  outline-offset: 4px;
-}
-
-.redes .red-body {
-  margin: 16px;
-}
-
-.redes .red-body p {
-  font-size: var(--body-font-size-xs);
-  color: var(--text-color);
-  margin: 0;
-}
-
-.redes .red-body p:first-child {
-  font-size: var(--body-font-size-m);
-  color: var(--text-color-primary);
-}
-
-.redes .red-image {
+.redes .list-social li {
   line-height: 0;
-  height: 200px;
-  width: 200px;
-  border-radius: 50%;
-  overflow: hidden;
-  filter: grayscale(1);
 }
 
-.redes > ul > li img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
+.redes .list-social a {
+  display: block;
 }
 
-.redes > ul > li:hover .red-image,
-.redes > ul > li:focus-visible .red-image {
-  filter: grayscale(0);
-}
-
-.redes .red-image img {
+.redes .list-social img {
+  display: block;
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
   transition: transform 180ms ease;
 }
 
-.redes > ul > li:hover .red-image img,
-.redes > ul > li:focus-visible .red-image img {
+.redes .list-social a:hover img,
+.redes .list-social a:focus-visible img {
   transform: scale(1.08);
-}
-
-.redes-modal {
-  width: min(90vw, 720px);
-  max-width: none;
-  padding: 0;
-  border: 0;
-  background: transparent;
-}
-
-.redes-modal::backdrop {
-  background: color-mix(in srgb, var(--text-color-primary) 50%, transparent);
-}
-
-.redes-modal-container {
-  position: relative;
-  padding: 32px;
-  background: var(--background-color);
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.redes .speaker-modal {
-  text-align: center;
-}
-
-.redes .speaker-picture {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.redes .speaker-modal .card-title {
-  margin-top: 20px;
-  color: var(--text-color-primary);
-  font-size: var(--body-font-size-m);
-}
-
-.redes .speaker-modal .speaker-details,
-.redes .speaker-modal .speaker-description {
-  margin-top: 16px;
-  text-align: left;
-  color: var(--text-color);
-}
-
-.redes .speaker-modal .speaker-links {
-  margin-top: 20px;
 }
