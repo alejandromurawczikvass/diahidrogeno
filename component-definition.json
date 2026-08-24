@@ -265,14 +265,14 @@
         },
         {
           "title": "Red",
-          "id": "redes-card",
+          "id": "red",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Red",
-                  "model": "redes-card"
+                  "model": "red"
                 }
               }
             }

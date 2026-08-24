@@ -21,22 +21,22 @@
   outline-offset: 4px;
 }
 
-.redes .redes-card-body {
+.redes .red-body {
   margin: 16px;
 }
 
-.redes .redes-card-body p {
+.redes .red-body p {
   font-size: var(--body-font-size-xs);
   color: var(--text-color);
   margin: 0;
 }
 
-.redes .redes-card-body p:first-child {
+.redes .red-body p:first-child {
   font-size: var(--body-font-size-m);
   color: var(--text-color-primary);
 }
 
-.redes .redes-card-image {
+.redes .red-image {
   line-height: 0;
   height: 200px;
   width: 200px;
@@ -51,17 +51,17 @@
   object-fit: cover;
 }
 
-.redes > ul > li:hover .redes-card-image,
-.redes > ul > li:focus-visible .redes-card-image {
+.redes > ul > li:hover .red-image,
+.redes > ul > li:focus-visible .red-image {
   filter: grayscale(0);
 }
 
-.redes .redes-card-image img {
+.redes .red-image img {
   transition: transform 180ms ease;
 }
 
-.redes > ul > li:hover .redes-card-image img,
-.redes > ul > li:focus-visible .redes-card-image img {
+.redes > ul > li:hover .red-image img,
+.redes > ul > li:focus-visible .red-image img {
   transform: scale(1.08);
 }
 

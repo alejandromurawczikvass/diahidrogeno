@@ -14,6 +14,7 @@
       "title",
       "hero",
       "cards",
+      "redes",
       "columns",
       "fragment",
       "accordion",
@@ -71,7 +72,7 @@
   {
     "id": "redes",
     "components": [
-      "redes-card"
+      "red"
     ]
   }
 ]

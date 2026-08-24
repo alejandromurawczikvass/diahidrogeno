@@ -309,7 +309,7 @@
     ]
   },
   {
-    "id": "redes-card",
+    "id": "red",
     "fields": [
       {
         "component": "reference",

@@ -20,14 +20,14 @@ function createModal(card, index) {
   const modalCard = document.createElement('div');
   modalCard.className = 'speaker-modal';
 
-  const image = card.querySelector('.redes-card-image img');
+  const image = card.querySelector('.red-image img');
   if (image) {
     const modalImage = image.cloneNode(true);
     modalImage.className = 'speaker-picture avatars';
     modalCard.append(modalImage);
   }
 
-  const body = card.querySelector('.redes-card-body');
+  const body = card.querySelector('.red-body');
   if (body) {
     const title = document.createElement('div');
     title.className = 'card-title';
@@ -40,7 +40,7 @@ function createModal(card, index) {
     modalCard.append(details);
   }
 
-  const description = card.querySelector('.redes-card-description');
+  const description = card.querySelector('.red-description');
   if (description) {
     const modalDescription = document.createElement('div');
     modalDescription.className = 'speaker-description';
@@ -71,11 +71,11 @@ export default function decorate(block) {
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div, index) => {
       if (index === 0 && div.children.length === 1 && div.querySelector('picture')) {
-        div.className = 'redes-card-image';
+        div.className = 'red-image';
       } else if (index === 2) {
-        div.className = 'redes-card-description';
+        div.className = 'red-description';
       } else {
-        div.className = 'redes-card-body';
+        div.className = 'red-body';
       }
     });
     ul.append(li);
