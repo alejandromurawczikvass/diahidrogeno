@@ -7,8 +7,17 @@
   padding: 0;
 }
 
-.redes .list-social li {
-  line-height: 0;
+.redes ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.redes ul li{
+  width: 20px;
 }
 
 .redes .list-social a {

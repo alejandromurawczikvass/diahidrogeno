@@ -1,110 +1,57 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-function closeModal(dialog, trigger) {
-  dialog.close();
-  trigger?.focus();
-}
-
-function createModal(card, index) {
-  const dialog = document.createElement('dialog');
-  dialog.className = 'redes-modal';
-  dialog.id = `redes-modal-${index}`;
-
-  const container = document.createElement('div');
-  container.className = 'redes-modal-container';
-
-  const content = document.createElement('div');
-  content.className = 'redes-modal-content';
-
-  const modalCard = document.createElement('div');
-  modalCard.className = 'speaker-modal';
-
-  const image = card.querySelector('.red-image img');
-  if (image) {
-    const modalImage = image.cloneNode(true);
-    modalImage.className = 'speaker-picture avatars';
-    modalCard.append(modalImage);
-  }
-
-  const body = card.querySelector('.red-body');
-  if (body) {
-    const title = document.createElement('div');
-    title.className = 'card-title';
-    title.textContent = body.querySelector('p')?.textContent.trim() || '';
-    modalCard.append(title);
-
-    const details = document.createElement('div');
-    details.className = 'speaker-details';
-    [...body.children].slice(1).forEach((child) => details.append(child.cloneNode(true)));
-    modalCard.append(details);
-  }
-
-  const description = card.querySelector('.red-description');
-  if (description) {
-    const modalDescription = document.createElement('div');
-    modalDescription.className = 'speaker-description';
-    while (description.firstChild) modalDescription.append(description.firstChild);
-    modalCard.append(modalDescription);
-  }
-
-  const links = document.createElement('div');
-  links.className = 'speaker-links card';
-  modalCard.append(links);
-
-  content.append(modalCard);
-  container.append(content);
-  dialog.append(container);
-
-  dialog.addEventListener('click', (event) => {
-    if (event.target === dialog) closeModal(dialog, dialog.trigger);
-  });
-
-  return dialog;
-}
-
 export default function decorate(block) {
   const ul = document.createElement('ul');
+
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     moveInstrumentation(row, li);
+
+    // 1. Extraer el primer enlace (href) de la fila antes de reestructurar
+    const linkElement = row.querySelector('a');
+    const href = linkElement ? linkElement.getAttribute('href') : null;
+
     while (row.firstElementChild) li.append(row.firstElementChild);
+
+    // 2. Clasificar los divs manteniendo solo la imagen y opcionalmente la descripción
     [...li.children].forEach((div, index) => {
       if (index === 0 && div.children.length === 1 && div.querySelector('picture')) {
         div.className = 'red-image';
       } else if (index === 2) {
         div.className = 'red-description';
       } else {
-        div.className = 'red-body';
+        // Se elimina la sección red-body del DOM
+        div.remove();
       }
     });
+
+    // 3. Envolver el <picture> dentro de un tag <a> usando el href extraído
+    const imageContainer = li.querySelector('.red-image');
+    const picture = imageContainer?.querySelector('picture');
+
+    if (picture && href) {
+      const link = document.createElement('a');
+      link.href = href;
+      link.className = 'red-image-link';
+      
+      // Si el enlace original tenía atributos como target="_blank", se conservan
+      if (linkElement.target) link.target = linkElement.target;
+
+      link.append(picture);
+      imageContainer.append(link);
+    }
+
     ul.append(li);
   });
+
+  /* Optimización de imágenes manteniendo la instrumentación de edición */
   ul.querySelectorAll('picture > img').forEach((img) => {
     const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });
 
-  const dialogs = [...ul.children].map((card, index) => {
-    const dialog = createModal(card, index);
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('role', 'button');
-    card.setAttribute('aria-controls', dialog.id);
-    card.addEventListener('click', () => {
-      dialog.trigger = card;
-      dialog.showModal();
-    });
-    card.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        dialog.trigger = card;
-        dialog.showModal();
-      }
-    });
-    return dialog;
-  });
-
+  /* Inyección limpia del listado */
   block.replaceChildren(ul);
-  block.append(...dialogs);
 }
