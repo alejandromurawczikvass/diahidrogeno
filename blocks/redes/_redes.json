@@ -24,7 +24,8 @@
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
               "name": "Red",
-              "model": "red"
+              "model": "red",
+              "filter": "red"
             }
           }
         }
@@ -56,6 +57,10 @@
       "components": [
         "red"
       ]
+    },
+    {
+      "id": "red",
+      "components": []
     }
   ]
 }
