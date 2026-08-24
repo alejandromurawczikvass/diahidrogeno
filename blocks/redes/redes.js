@@ -34,7 +34,6 @@ export default function decorate(block) {
       const link = document.createElement('a');
       link.href = href;
       link.className = 'red-image-link';
-      
       // Si el enlace original tenía atributos como target="_blank", se conservan
       if (linkElement.target) link.target = linkElement.target;
 

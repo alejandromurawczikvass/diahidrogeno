@@ -35,15 +35,15 @@ main > .section .carousel-wrapper {
     max-width: 100%;
 }
 
-.carousel > ul > li.left img {
+.carousel > ul > li.align-left img {
     object-position: left;
 }
 
-.carousel > ul > li.center img{
+.carousel > ul > li.align-center img{
     object-position: center;
 }
 
-.carousel > ul > li.right img{
+.carousel > ul > li.align-right img{
     object-position: right;
 }
 

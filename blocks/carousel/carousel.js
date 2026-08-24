@@ -84,9 +84,12 @@ export default function decorate(block) {
       if (index === 0 && div.children.length === 1 && div.querySelector('picture')) {
         div.className = 'carousel-card-image';
       } else {
-        /* Extraer el valor del campo 'style' de Universal Editor si se renderiza en las celdas subsecuentes */
         const textValue = div.textContent.trim().toLowerCase();
-        if (textValue.includes('left') || textValue.includes('center') || textValue.includes('right')) {
+        if (
+          textValue.includes('left')
+          || textValue.includes('center')
+          || textValue.includes('right')
+        ) {
           li.classList.add(`align-${textValue}`);
           div.remove(); // Limpia la celda técnica de estilo para que no ensucie el DOM
         }
@@ -97,7 +100,12 @@ export default function decorate(block) {
   });
 
   ul.querySelectorAll('picture > img').forEach((img) => {
-    const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+    const optimizedPic = createOptimizedPicture(
+      img.src,
+      img.alt,
+      false,
+      [{ width: '750' }],
+    );
     moveInstrumentation(img, optimizedPic.querySelector('img'));
     img.closest('picture').replaceWith(optimizedPic);
   });
