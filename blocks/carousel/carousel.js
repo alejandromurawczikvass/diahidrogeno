@@ -73,17 +73,29 @@ function createModal(cards) {
 
 export default function decorate(block) {
   const ul = document.createElement('ul');
+
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     moveInstrumentation(row, li);
+
     while (row.firstElementChild) li.append(row.firstElementChild);
+
     [...li.children].forEach((div, index) => {
       if (index === 0 && div.children.length === 1 && div.querySelector('picture')) {
         div.className = 'carousel-card-image';
+      } else {
+        /* Extraer el valor del campo 'style' de Universal Editor si se renderiza en las celdas subsecuentes */
+        const textValue = div.textContent.trim().toLowerCase();
+        if (textValue.includes('left') || textValue.includes('center') || textValue.includes('right')) {
+          li.classList.add(`align-${textValue}`);
+          div.remove(); // Limpia la celda técnica de estilo para que no ensucie el DOM
+        }
       }
     });
+
     ul.append(li);
   });
+
   ul.querySelectorAll('picture > img').forEach((img) => {
     const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
     moveInstrumentation(img, optimizedPic.querySelector('img'));
@@ -92,6 +104,7 @@ export default function decorate(block) {
 
   const cards = [...ul.children];
   const dialog = createModal(cards);
+
   cards.forEach((card, index) => {
     card.setAttribute('tabindex', '0');
     card.setAttribute('role', 'button');

@@ -245,9 +245,10 @@
         "valueType": "string"
       },
       {
-        "component": "multiselect",
+        "component": "select",
         "name": "style",
-        "label": "Style",
+        "label": "Image Alignment",
+        "valueType": "string",
         "options": [
           {
             "name": "Left",

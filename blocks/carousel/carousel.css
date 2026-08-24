@@ -35,6 +35,18 @@ main > .section .carousel-wrapper {
     max-width: 100%;
 }
 
+.carousel > ul > li.left img {
+    object-position: left;
+}
+
+.carousel > ul > li.center img{
+    object-position: center;
+}
+
+.carousel > ul > li.right img{
+    object-position: right;
+}
+
 .carousel-modal {
     width: min(94vw, 760px);
     height: min(90vh, 510px);
