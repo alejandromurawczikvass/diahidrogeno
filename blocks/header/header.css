@@ -280,3 +280,69 @@ header nav .nav-sections ul > li > ul > li {
 header nav .nav-tools {
   grid-area: tools;
 }
+
+header nav .nav-tools.language-switcher {
+  position: relative;
+}
+
+header nav .language-switcher-button {
+  margin: 0;
+  border: 0;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--light-color);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--link-color);
+  border-radius: 2.4em;
+}
+
+header nav .language-switcher-button::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentcolor;
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg);
+}
+
+header nav .language-switcher-button[aria-expanded='true']::after {
+  transform: rotate(225deg);
+}
+
+header nav .language-switcher-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 120px;
+  margin: 0;
+  list-style: none;
+  background-color: var(--light-color);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+  padding: 0;
+}
+
+header nav .language-switcher-menu li {
+  padding: 8px 16px;
+}
+header nav .language-switcher-menu li:hover{
+  background-color: var(--link-color);
+}
+
+header nav .language-switcher-menu li:hover a{
+  color: var(--light-color);
+}
+
+header nav .language-switcher-menu a {
+  display: block;
+}
+
+@media (width < 900px) {
+  header nav .language-switcher-menu {
+    position: static;
+    box-shadow: none;
+  }
+}

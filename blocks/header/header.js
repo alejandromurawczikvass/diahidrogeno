@@ -108,6 +108,61 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+function decorateLanguageSwitcher(navTools) {
+  if (!navTools) return;
+  const links = [...navTools.querySelectorAll('a')];
+  if (links.length < 2) return;
+
+  const pathLocale = window.location.pathname.match(/^\/([a-z]{2})(?:\/|$)/i)?.[1];
+  const currentLocale = (pathLocale || document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+  const currentLink = links.find((link) => {
+    const locale = link.pathname.match(/^\/([a-z]{2})(?:\/|$)/i)?.[1];
+    return locale?.toLowerCase() === currentLocale;
+  }) || links[0];
+  const wrapper = currentLink.closest('.default-content-wrapper') || navTools;
+  const menu = document.createElement('ul');
+  const menuId = `language-menu-${Date.now()}`;
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'language-switcher-button';
+  button.setAttribute('aria-expanded', 'false');
+  button.setAttribute('aria-controls', menuId);
+  button.textContent = currentLink.textContent.trim();
+
+  links.forEach((link) => {
+    const item = document.createElement('li');
+    item.append(link);
+    menu.append(item);
+  });
+  menu.id = menuId;
+  menu.className = 'language-switcher-menu';
+  menu.hidden = true;
+  wrapper.replaceChildren(button, menu);
+  navTools.classList.add('language-switcher');
+
+  const closeMenu = () => {
+    button.setAttribute('aria-expanded', 'false');
+    menu.hidden = true;
+  };
+  button.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    menu.hidden = expanded;
+  });
+  document.addEventListener('click', (event) => {
+    if (!navTools.contains(event.target)) closeMenu();
+  });
+  button.addEventListener('keydown', (event) => {
+    if (event.code === 'Escape') closeMenu();
+  });
+}
+
+function getLocalePath(path) {
+  const locale = window.location.pathname.match(/^\/([a-z]{2})(?:\/|$)/i)?.[1];
+  if (!locale || path.match(new RegExp(`^/${locale}(?:/|$)`, 'i'))) return path;
+  return `/${locale}${path.startsWith('/') ? path : `/${path}`}`;
+}
+
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -116,7 +171,8 @@ export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
-  const fragment = await loadFragment(navPath);
+  const localizedNavPath = getLocalePath(navPath);
+  const fragment = await loadFragment(localizedNavPath) || await loadFragment(navPath);
 
   // decorate nav DOM
   block.textContent = '';
@@ -157,6 +213,8 @@ export default async function decorate(block) {
       });
     });
   }
+
+  decorateLanguageSwitcher(nav.querySelector('.nav-tools'));
 
   // hamburger for mobile
   const hamburger = document.createElement('div');
