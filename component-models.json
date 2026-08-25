@@ -186,6 +186,16 @@
     "id": "anterior",
     "fields": [
       {
+        "component": "text",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "aem-content",
+        "name": "button",
+        "label": "Button"
+      },
+      {
         "component": "aem-content",
         "name": "link",
         "label": "Link"
