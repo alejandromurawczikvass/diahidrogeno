@@ -94,7 +94,7 @@ export default function decorate(block) {
       a.textContent = buttonText || (buttonAnchor ? buttonAnchor.textContent : 'Ver más');
       a.className = 'button primary';
       a.title = a.textContent;
-      a.target = "_blank"
+      a.target = '_blank';
 
       buttonWrapper.append(a);
       infoContainer.append(buttonWrapper);

@@ -16,7 +16,6 @@ export default function decorate(block) {
 
   const rows = [...block.children];
 
-  // Read the authored fields in model order: title, background image, foreground image, date.
   let titleCell = null;
   let backgroundImageCell = null;
   let foregroundImageCell = null;
@@ -36,7 +35,6 @@ export default function decorate(block) {
     [titleCell] = fields;
   }
 
-  // Extract background image URL from the authored background image.
   if (backgroundImageCell) {
     const img = backgroundImageCell.querySelector('img');
 
@@ -45,12 +43,10 @@ export default function decorate(block) {
     }
   }
 
-  // Apply background image to hero
   if (backgroundImageUrl) {
     hero.style.backgroundImage = `url('${backgroundImageUrl}')`;
   }
 
-  // Create hero__title
   if (titleCell) {
     const titleDiv = document.createElement('div');
     titleDiv.className = 'hero-title';
@@ -64,7 +60,6 @@ export default function decorate(block) {
     heroGrid.append(titleDiv);
   }
 
-  // Create hero__wordmark
   if (foregroundImageCell) {
     const wordmarkDiv = document.createElement('div');
     wordmarkDiv.className = 'hero-wordmark';
@@ -86,7 +81,6 @@ export default function decorate(block) {
       img.className = 'img-wordmark';
       wordmarkDiv.append(img);
     } else {
-      // Move any content from cell
       while (foregroundImageCell.firstChild) {
         wordmarkDiv.append(foregroundImageCell.firstChild);
       }
@@ -95,7 +89,6 @@ export default function decorate(block) {
     heroGrid.append(wordmarkDiv);
   }
 
-  // Create hero__date
   if (dateCell) {
     const dateDiv = document.createElement('div');
     dateDiv.className = 'hero-date';

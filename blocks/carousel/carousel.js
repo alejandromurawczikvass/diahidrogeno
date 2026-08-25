@@ -91,7 +91,7 @@ export default function decorate(block) {
           || textValue.includes('right')
         ) {
           li.classList.add(`align-${textValue}`);
-          div.remove(); // Limpia la celda técnica de estilo para que no ensucie el DOM
+          div.remove();
         }
       }
     });
