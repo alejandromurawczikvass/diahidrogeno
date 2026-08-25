@@ -186,11 +186,11 @@
     "id": "anterior",
     "fields": [
       {
-        "component": "text",
+        "component": "reference",
+        "valueType": "string",
         "name": "youtubeUrl",
-        "value": "",
         "label": "YouTube URL",
-        "valueType": "string"
+        "multi": false
       }
     ]
   },

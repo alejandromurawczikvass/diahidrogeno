@@ -26,8 +26,12 @@ function createYoutubeVideo(value) {
   if (!videoId) return null;
 
   const iframe = document.createElement('iframe');
-  iframe.src = `https://www.youtube.com/embed/${encodeURIComponent(videoId)}`;
+  iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`;
   iframe.title = 'Video de YouTube';
+  iframe.width = '560';
+  iframe.height = '315';
+  iframe.setAttribute('frameborder', '0');
+  iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
   iframe.loading = 'lazy';
   iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
   iframe.allowFullscreen = true;
@@ -35,36 +39,41 @@ function createYoutubeVideo(value) {
 }
 
 export default function decorate(block) {
-  const list = document.createElement('ul');
-  list.className = 'grid-fourths';
+  const gridContainer = document.createElement('div');
+  gridContainer.className = 'grid-fourths';
 
   [...block.children].forEach((row) => {
-    const item = document.createElement('li');
+    const cardVideo = document.createElement('div');
     const videoContainer = document.createElement('div');
-    const info = document.createElement('div');
-    moveInstrumentation(row, item);
+    const infoContainer = document.createElement('div');
 
-    item.className = 'card-video';
+    moveInstrumentation(row, cardVideo);
+
+    cardVideo.className = 'card-video';
     videoContainer.className = 'ratio ratio-16x9 bg-iframe card-video__video';
-    info.className = 'card-video__info';
-    while (row.firstElementChild) item.append(row.firstElementChild);
+    infoContainer.className = 'card-video__info';
 
-    const videoField = item.firstElementChild;
+    const videoField = row.firstElementChild;
     if (videoField) {
-      const video = createYoutubeVideo(videoField.textContent.trim());
-      if (video) {
-        videoContainer.append(video);
-        videoField.remove();
+      const link = videoField.querySelector('a');
+      const videoUrl = link ? link.href : videoField.textContent.trim();
+
+      const iframe = createYoutubeVideo(videoUrl);
+      if (iframe) {
+        videoContainer.append(iframe);
       } else {
-        videoField.className = 'anteriores-video-url';
-        videoContainer.append(videoField);
+        videoContainer.append(videoField.cloneNode(true));
       }
+      videoField.remove();
     }
 
-    while (item.firstElementChild) info.append(item.firstElementChild);
-    item.append(videoContainer, info);
-    list.append(item);
+    while (row.firstElementChild) {
+      infoContainer.append(row.firstElementChild);
+    }
+
+    cardVideo.append(videoContainer, infoContainer);
+    gridContainer.append(cardVideo);
   });
 
-  block.replaceChildren(list);
+  block.replaceChildren(gridContainer);
 }

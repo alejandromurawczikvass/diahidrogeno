@@ -24,8 +24,7 @@
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
               "name": "Anterior",
-              "model": "anterior",
-              "filter": "anterior"
+              "model": "anterior"
             }
           }
         }
@@ -37,11 +36,11 @@
       "id": "anterior",
       "fields": [
         {
-          "component": "text",
+          "component": "reference",
+          "valueType": "string",
           "name": "youtubeUrl",
-          "value": "",
           "label": "YouTube URL",
-          "valueType": "string"
+          "multi": false
         }
       ]
     }
@@ -55,8 +54,7 @@
     },
     {
       "id": "anterior",
-      "components": [
-        "title",
+      "components":[
         "text",
         "button"
       ]

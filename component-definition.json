@@ -136,8 +136,7 @@
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Anterior",
-                  "model": "anterior",
-                  "filter": "anterior"
+                  "model": "anterior"
                 }
               }
             }
