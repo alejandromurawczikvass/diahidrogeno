@@ -37,7 +37,6 @@
   {
     "id": "anterior",
     "components": [
-      "title",
       "button"
     ]
   },
