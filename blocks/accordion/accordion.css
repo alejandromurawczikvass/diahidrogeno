@@ -80,7 +80,7 @@
   color: var(--text-color-primary);
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   transition: color 0.2s ease;
   font-family: var(--heading-font-family);
   margin-bottom: 8px;
@@ -96,13 +96,17 @@
 }
 
 .accordion-trigger::after {
-  content: '▼';
+  content: '';
   display: none;
   margin-left: 12px;
-  font-size: 12px;
+   width: 10px;
+  height: 10px;
+  border-top: 2px solid currentcolor;
+  border-left: 2px solid currentcolor;
   transition: transform 0.3s ease;
   flex-shrink: 0;
   color: var(--text-color-primary);
+  transform: rotate(-135deg);
 }
 
 .accordion-trigger.has-content::after {
@@ -111,7 +115,7 @@
 }
 
 .accordion-trigger.has-content[aria-expanded="true"]::after {
-  transform: rotate(180deg);
+  transform: rotate(45deg);
 }
 
 .accordion-title-section {

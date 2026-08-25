@@ -23,3 +23,45 @@
 .anteriores .anteriores-video-url {
   color: var(--text-color);
 }
+
+.anteriores .grid-fourths{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.anteriores .grid-fourths .card-video{
+  width: 100%;
+  max-width: 430px;
+  position: relative;
+}
+
+.anteriores .grid-fourths .card-video::after{
+  content: "";
+  width: 250px;
+  height: 1px;
+  background-color: var(--text-color-primary);
+  display: block;
+  margin: 16px auto 0;
+  filter: opacity(.2);
+}
+
+@media (width >= 900px){
+  .anteriores .grid-fourths .card-video::after{
+    content: none;
+  }
+}
+
+.anteriores iframe{
+  border-radius: 16px;
+}
+
+.anteriores .grid-fourths .card-video div div p{
+  font-size: 24px;
+  color: var(--text-color-primary);
+  font-weight: 500;
+  margin-block: 1.5rem;
+}

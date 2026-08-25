@@ -48,5 +48,6 @@
         left: 50%;
         background: var(--text-color);
         bottom: 3px;
+        filter: opacity(.4);
   }
 }

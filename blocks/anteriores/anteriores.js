@@ -28,8 +28,8 @@ function createYoutubeVideo(value) {
   const iframe = document.createElement('iframe');
   iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`;
   iframe.title = 'Video de YouTube';
-  iframe.width = '560';
-  iframe.height = '315';
+  iframe.width = '426';
+  iframe.height = '239';
   iframe.setAttribute('frameborder', '0');
   iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
   iframe.loading = 'lazy';
@@ -94,6 +94,7 @@ export default function decorate(block) {
       a.textContent = buttonText || (buttonAnchor ? buttonAnchor.textContent : 'Ver más');
       a.className = 'button primary';
       a.title = a.textContent;
+      a.target = "_blank"
 
       buttonWrapper.append(a);
       infoContainer.append(buttonWrapper);
