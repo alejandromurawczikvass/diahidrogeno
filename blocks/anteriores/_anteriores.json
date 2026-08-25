@@ -36,11 +36,9 @@
       "id": "anterior",
       "fields": [
         {
-          "component": "reference",
-          "valueType": "string",
-          "name": "youtubeUrl",
-          "label": "YouTube URL",
-          "multi": false
+          "component": "aem-content",
+          "name": "link",
+          "label": "Link"
         }
       ]
     }
