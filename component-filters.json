@@ -35,12 +35,6 @@
     ]
   },
   {
-    "id": "anterior",
-    "components": [
-      "button"
-    ]
-  },
-  {
     "id": "cards",
     "components": [
       "card"

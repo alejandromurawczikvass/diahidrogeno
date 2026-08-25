@@ -188,12 +188,22 @@
       {
         "component": "aem-content",
         "name": "link",
-        "label": "Link"
+        "label": "Video Link"
       },
       {
         "component": "text",
         "name": "title",
         "label": "Title"
+      },
+      {
+        "component": "text",
+        "name": "buttonText",
+        "label": "Texto del Botón"
+      },
+      {
+        "component": "aem-content",
+        "name": "buttonLink",
+        "label": "Enlace del Botón"
       }
     ]
   },

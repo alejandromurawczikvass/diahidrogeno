@@ -53,7 +53,7 @@ export default function decorate(block) {
     videoContainer.className = 'ratio ratio-16x9 bg-iframe card-video__video';
     infoContainer.className = 'card-video__info';
 
-    const videoField = row.firstElementChild;
+    const videoField = row.children[0];
     if (videoField) {
       const link = videoField.querySelector('a');
       const videoUrl = link ? link.href : videoField.textContent.trim();
@@ -64,11 +64,39 @@ export default function decorate(block) {
       } else {
         videoContainer.append(videoField.cloneNode(true));
       }
-      videoField.remove();
     }
 
-    while (row.firstElementChild) {
-      infoContainer.append(row.firstElementChild);
+    const titleField = row.children[1];
+    if (titleField && titleField.textContent.trim() !== '') {
+      infoContainer.append(titleField.cloneNode(true));
+    }
+
+    const buttonTextField = row.children[2];
+    const buttonLinkField = row.children[3];
+
+    const buttonText = buttonTextField ? buttonTextField.textContent.trim() : '';
+    const buttonAnchor = buttonLinkField ? buttonLinkField.querySelector('a') : null;
+    let buttonHref;
+    if (buttonAnchor) {
+      buttonHref = buttonAnchor.href;
+    } else if (buttonLinkField) {
+      buttonHref = buttonLinkField.textContent.trim();
+    } else {
+      buttonHref = '';
+    }
+
+    if (buttonHref || buttonText) {
+      const buttonWrapper = document.createElement('p');
+      buttonWrapper.className = 'button-container';
+
+      const a = document.createElement('a');
+      a.href = buttonHref || '#';
+      a.textContent = buttonText || (buttonAnchor ? buttonAnchor.textContent : 'Ver más');
+      a.className = 'button primary';
+      a.title = a.textContent;
+
+      buttonWrapper.append(a);
+      infoContainer.append(buttonWrapper);
     }
 
     cardVideo.append(videoContainer, infoContainer);
