@@ -49,6 +49,10 @@
   filter: opacity(.2);
 }
 
+.anteriores iframe{
+  width: 100%;
+}
+
 @media (width >= 900px){
   .anteriores .grid-fourths .card-video::after{
     content: none;
@@ -57,6 +61,7 @@
 
 .anteriores iframe{
   border-radius: 16px;
+  width: auto;
 }
 
 .anteriores .grid-fourths .card-video div div p{
