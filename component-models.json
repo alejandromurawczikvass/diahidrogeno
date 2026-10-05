@@ -342,6 +342,32 @@
     ]
   },
   {
+    "id": "inicio-sesion-form",
+    "fields": [
+      {
+        "component": "text",
+        "name": "title",
+        "value": "",
+        "label": "Título",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "actionUrl",
+        "value": "",
+        "label": "URL externa de destino",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "submitLabel",
+        "value": "ENVIAR",
+        "label": "Texto del botón",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "red",
     "fields": [
       {

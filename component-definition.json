@@ -248,6 +248,36 @@
           }
         },
         {
+          "title": "Inicio sesión",
+          "id": "inicio-sesion",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Inicio sesión",
+                  "filter": "inicio-sesion"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Formulario de inicio sesión",
+          "id": "inicio-sesion-form",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Formulario de inicio sesión",
+                  "model": "inicio-sesion-form"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Redes",
           "id": "redes",
           "plugins": {
