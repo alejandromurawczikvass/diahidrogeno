@@ -81,6 +81,30 @@
     ]
   },
   {
+    "id": "text",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Tamaño de fuente",
+        "options": [
+          {
+            "name": "Pequeño (14 px)",
+            "value": "text-small"
+          },
+          {
+            "name": "Mediano (18 px)",
+            "value": "text-medium"
+          },
+          {
+            "name": "Grande (24 px)",
+            "value": "text-large"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "button",
     "fields": [
       {
@@ -370,26 +394,6 @@
   {
     "id": "margen",
     "fields": [
-      {
-        "component": "select",
-        "name": "side",
-        "value": "both",
-        "label": "Lado del margen",
-        "options": [
-          {
-            "name": "Superior",
-            "value": "top"
-          },
-          {
-            "name": "Inferior",
-            "value": "bottom"
-          },
-          {
-            "name": "Ambos",
-            "value": "both"
-          }
-        ]
-      },
       {
         "component": "text",
         "name": "amount",
