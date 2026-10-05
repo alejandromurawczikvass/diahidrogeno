@@ -62,13 +62,6 @@ export default function decorate(block) {
   submitButton.textContent = buttonText;
   if (buttonTextField) moveInstrumentation(buttonTextField, submitButton);
 
-  const updateSubmitState = () => {
-    submitButton.disabled = !actionUrl || !emailInput.validity.valid;
-  };
-  emailInput.addEventListener('input', updateSubmitState);
-  emailInput.addEventListener('change', updateSubmitState);
-  updateSubmitState();
-
   form.append(emailLabel, emailInput, submitButton);
   container.append(form);
   block.replaceChildren(container);
