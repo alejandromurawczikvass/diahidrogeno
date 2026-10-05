@@ -8,7 +8,7 @@ import {
   loadSections,
 } from './aem.js';
 import { decorateRichtext } from './editor-support-rte.js';
-import { decorateButtons, decorateMain } from './scripts.js';
+import { decorateButtons, decorateDefaultContent, decorateMain } from './scripts.js';
 
 let promiseChanges$ = Promise.resolve();
 
@@ -62,6 +62,7 @@ async function applyChanges(event) {
         decorateBlock(newBlock);
         decorateRichtext(newBlock);
         await loadBlock(newBlock);
+        decorateDefaultContent(newBlock);
         block.remove();
         newBlock.style.display = null;
         return true;
@@ -81,6 +82,7 @@ async function applyChanges(event) {
           decorateSections(parentElement);
           decorateBlocks(parentElement);
           await loadSections(parentElement);
+          decorateDefaultContent(newSection);
           element.remove();
           newSection.style.display = null;
         } else {
@@ -88,6 +90,7 @@ async function applyChanges(event) {
           decorateButtons(parentElement);
           decorateIcons(parentElement);
           decorateRichtext(parentElement);
+          decorateDefaultContent(parentElement);
         }
         return true;
       }

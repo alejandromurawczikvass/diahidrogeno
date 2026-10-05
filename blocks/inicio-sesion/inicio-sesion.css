@@ -1,11 +1,11 @@
 .inicio-sesion .inicio-sesion-content {
-  border: 1px solid #95b900;
+  border: 1px solid var(--text-color-primary-dark);
   padding: 24px 16px 18px;
   text-align: center;
 }
 
 .inicio-sesion h2 {
-  color: #626262;
+  color: var(--text-color);
   font-size: var(--heading-font-size-xs);
   line-height: 1.35;
   margin: 0 auto 12px;
@@ -30,7 +30,7 @@
 }
 
 .inicio-sesion input[type='email'] {
-  border: 1px solid #95b900;
+  border: 1px solid var(--text-color-primary-dark);
   border-radius: 0;
   box-sizing: border-box;
   font: inherit;
@@ -41,15 +41,15 @@
 }
 
 .inicio-sesion input[type='email']:focus-visible {
-  outline: 2px solid #626262;
+  outline: 2px solid var(--text-color);
   outline-offset: 2px;
 }
 
 .inicio-sesion button {
-  background: #95b900;
+  background: var(--text-color-primary-dark);
   border: 0;
   border-radius: 999px;
-  color: #fff;
+  color: var(--background-color);
   cursor: pointer;
   font: inherit;
   font-weight: 700;
@@ -64,7 +64,7 @@
 }
 
 .inicio-sesion button:focus-visible {
-  outline: 2px solid #626262;
+  outline: 2px solid var(--text-color);
   outline-offset: 3px;
 }
 

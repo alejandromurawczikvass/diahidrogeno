@@ -110,7 +110,7 @@ export function decorateButtons(main) {
   });
 }
 
-function decorateDefaultContent(main) {
+export function decorateDefaultContent(main) {
   main.querySelectorAll('.title, .text').forEach((component) => {
     component.querySelectorAll('[data-aue-prop="classes"], [data-aue-prop="style"]').forEach((field) => {
       field.textContent.split(',').filter(Boolean).forEach((value) => {
