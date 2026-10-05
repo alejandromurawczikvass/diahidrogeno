@@ -35,7 +35,7 @@
 
 .anteriores .grid-fourths .card-video{
   width: 100%;
-  max-width: 430px;
+  max-width: 260px;
   position: relative;
 }
 
@@ -50,18 +50,15 @@
 }
 
 .anteriores iframe{
+  border-radius: 16px;
   width: 100%;
+  height: auto;
 }
 
 @media (width >= 900px){
   .anteriores .grid-fourths .card-video::after{
     content: none;
   }
-}
-
-.anteriores iframe{
-  border-radius: 16px;
-  width: auto;
 }
 
 .anteriores .grid-fourths .card-video div div p{

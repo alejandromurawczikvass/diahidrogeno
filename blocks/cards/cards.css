@@ -84,6 +84,11 @@
   max-height: 80vh;
   overflow-y: auto;
 }
+.cards-container > p{
+  font-size: var(--body-font-size-xs);
+  margin-bottom: 24px;
+  font-weight: 100;
+}
 
 .speaker-modal {
   text-align: center;
@@ -111,4 +116,7 @@
 
 .speaker-modal .speaker-links {
   margin-top: 20px;
+}
+.speaker-description p{
+  font-size: var(--body-font-size-xs);
 }

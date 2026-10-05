@@ -1,5 +1,6 @@
 main > .section .carousel-wrapper {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .carousel > ul {
@@ -159,6 +160,7 @@ main > .section .carousel-wrapper {
 @media (width >= 900px) {
     main > .section .carousel-wrapper {
         margin-top: 40px;
+        margin-bottom: 40px;
     }
 
     .carousel > ul {
