@@ -60,8 +60,14 @@ export default function decorate(block) {
   const submitButton = document.createElement('button');
   submitButton.type = 'submit';
   submitButton.textContent = buttonText;
-  submitButton.disabled = !actionUrl;
   if (buttonTextField) moveInstrumentation(buttonTextField, submitButton);
+
+  const updateSubmitState = () => {
+    submitButton.disabled = !actionUrl || !emailInput.validity.valid;
+  };
+  emailInput.addEventListener('input', updateSubmitState);
+  emailInput.addEventListener('change', updateSubmitState);
+  updateSubmitState();
 
   form.append(emailLabel, emailInput, submitButton);
   container.append(form);
