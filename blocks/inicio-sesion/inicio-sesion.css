@@ -1,10 +1,10 @@
-.inicio-sesion .inicio-sesion-content {
+.inicio-sesi-n .inicio-sesi-n-content {
   border: 1px solid #95b900;
   padding: 24px 16px 18px;
   text-align: center;
 }
 
-.inicio-sesion h2 {
+.inicio-sesi-n h2 {
   color: #626262;
   font-size: var(--heading-font-size-xs);
   line-height: 1.35;
@@ -12,14 +12,14 @@
   max-width: 380px;
 }
 
-.inicio-sesion form {
+.inicio-sesi-n form {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-.inicio-sesion .inicio-sesion-label {
+.inicio-sesi-n .inicio-sesi-n-label {
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -29,7 +29,7 @@
   white-space: nowrap;
 }
 
-.inicio-sesion input[type='email'] {
+.inicio-sesi-n input[type='email'] {
   border: 1px solid #95b900;
   border-radius: 0;
   box-sizing: border-box;
@@ -40,12 +40,12 @@
   width: 100%;
 }
 
-.inicio-sesion input[type='email']:focus-visible {
+.inicio-sesi-n input[type='email']:focus-visible {
   outline: 2px solid #626262;
   outline-offset: 2px;
 }
 
-.inicio-sesion button {
+.inicio-sesi-n button {
   background: #95b900;
   border: 0;
   border-radius: 999px;
@@ -58,18 +58,18 @@
   padding: 8px 24px;
 }
 
-.inicio-sesion button:disabled {
+.inicio-sesi-n button:disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
 
-.inicio-sesion button:focus-visible {
+.inicio-sesi-n button:focus-visible {
   outline: 2px solid #626262;
   outline-offset: 3px;
 }
 
 @media (width >= 600px) {
-  .inicio-sesion .inicio-sesion-content {
+  .inicio-sesi-n .inicio-sesi-n-content {
     padding: 28px 24px 18px;
   }
 }
