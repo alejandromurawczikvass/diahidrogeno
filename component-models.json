@@ -342,7 +342,7 @@
     ]
   },
   {
-    "id": "inicio-sesion-form",
+    "id": "inicio-sesion",
     "fields": [
       {
         "component": "text",

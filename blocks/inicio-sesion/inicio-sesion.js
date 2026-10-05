@@ -19,17 +19,16 @@ function getActionUrl(value) {
 }
 
 export default function decorate(block) {
-  const row = block.firstElementChild;
-  if (!row) return;
-
-  const [titleField, actionField, buttonTextField] = row.children;
+  const rows = [...block.children];
+  const fields = rows.flatMap((row) => [...row.children]);
+  const [titleField, actionField, buttonTextField] = fields;
   const title = getFieldValue(titleField);
   const actionUrl = getActionUrl(getFieldValue(actionField));
   const buttonText = getFieldValue(buttonTextField) || 'ENVIAR';
 
   const container = document.createElement('div');
   container.className = 'inicio-sesion-content';
-  moveInstrumentation(row, container);
+  if (rows[0]) moveInstrumentation(rows[0], container);
 
   if (title) {
     const heading = document.createElement('h2');

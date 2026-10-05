@@ -63,12 +63,6 @@
     ]
   },
   {
-    "id": "inicio-sesion",
-    "components": [
-      "inicio-sesion-form"
-    ]
-  },
-  {
     "id": "redes",
     "components": [
       "red"
