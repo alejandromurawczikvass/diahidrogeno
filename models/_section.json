@@ -63,7 +63,8 @@
         "accordion",
         "anteriores",
         "carousel",
-        "inicio-sesion"
+        "inicio-sesion",
+        "margen"
       ]
     }
   ]

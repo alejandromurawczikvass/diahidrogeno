@@ -368,6 +368,38 @@
     ]
   },
   {
+    "id": "margen",
+    "fields": [
+      {
+        "component": "select",
+        "name": "side",
+        "value": "both",
+        "label": "Lado del margen",
+        "options": [
+          {
+            "name": "Superior",
+            "value": "top"
+          },
+          {
+            "name": "Inferior",
+            "value": "bottom"
+          },
+          {
+            "name": "Ambos",
+            "value": "both"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "amount",
+        "value": "40",
+        "valueType": "number",
+        "label": "Cantidad (px)"
+      }
+    ]
+  },
+  {
     "id": "red",
     "fields": [
       {
