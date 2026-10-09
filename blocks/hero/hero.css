@@ -87,7 +87,7 @@
     margin: 0;
     font-size: 28px;
     font-weight: 600;
-    color: var(--light-color);
+    color: var(--dark-color);
     font-family: var(--hashtag-font-family);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -121,19 +121,20 @@
 
 .title-date{
     font-weight: 700;
+    color: var(--link-color);
+    font-family: var(--montserrat-bold-font-family);
 }
 
 .title-save-the-date{
-    font-weight: 300;
+    font-weight: 100;
+    color: var(--dark-color);
+    font-family: var(--montserrat-thin-font-family);
 }
 
 .title-date,
 .title-save-the-date {
     margin: 0;
     font-size: 36px;
-    font-family: var(--montserrat-font-family);
-    letter-spacing: 2px;
-    color: var(--light-color);
 }
 
 @media (width >= 900px) {

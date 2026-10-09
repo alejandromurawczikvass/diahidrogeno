@@ -25,7 +25,9 @@
   --body-font-family: "Myriad-Pro-Regular", sans-serif;
   --heading-font-family: "Myriad-Pro-Regular", sans-serif;
   --hashtag-font-family: "Enagas-Regular";
-  --montserrat-font-family: "Montserrat"
+  --montserrat-font-family: "Montserrat";
+  --montserrat-thin-font-family: "Montserrat-thin";
+  --montserrat-bold-font-family: "Montserrat-bold";
 
   /* body sizes */
   --body-font-size-m: 24px;
