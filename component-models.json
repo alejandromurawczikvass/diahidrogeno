@@ -384,6 +384,13 @@
       },
       {
         "component": "text",
+        "name": "validationUrl",
+        "value": "",
+        "label": "URL para comprobar el email",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
         "name": "submitLabel",
         "value": "ENVIAR",
         "label": "Texto del botón",

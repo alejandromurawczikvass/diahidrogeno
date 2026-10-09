@@ -45,6 +45,11 @@
   outline-offset: 2px;
 }
 
+.inicio-sesion .inicio-sesion-message {
+  color: #b42318;
+  margin: 0;
+}
+
 .inicio-sesion button {
   background: var(--text-color-primary-dark);
   border: 0;

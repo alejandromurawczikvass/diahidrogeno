@@ -21,9 +21,10 @@ function getActionUrl(value) {
 export default function decorate(block) {
   const rows = [...block.children];
   const fields = rows.flatMap((row) => [...row.children]);
-  const [titleField, actionField, buttonTextField] = fields;
+  const [titleField, actionField, validationField, buttonTextField] = fields;
   const title = getFieldValue(titleField);
   const actionUrl = getActionUrl(getFieldValue(actionField));
+  const validationUrl = getActionUrl(getFieldValue(validationField));
   const buttonText = getFieldValue(buttonTextField) || 'ENVIAR';
 
   const container = document.createElement('div');
@@ -57,12 +58,53 @@ export default function decorate(block) {
   emailInput.autocomplete = 'email';
   emailInput.required = true;
 
+  const message = document.createElement('p');
+  message.className = 'inicio-sesion-message';
+  message.setAttribute('role', 'alert');
+  message.hidden = true;
+
   const submitButton = document.createElement('button');
   submitButton.type = 'submit';
   submitButton.textContent = buttonText;
   if (buttonTextField) moveInstrumentation(buttonTextField, submitButton);
 
-  form.append(emailLabel, emailInput, submitButton);
+  let validationPending = false;
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (validationPending) return;
+
+    message.hidden = true;
+    if (!actionUrl || !validationUrl) {
+      message.textContent = 'Falta configurar la URL de destino o de comprobación.';
+      message.hidden = false;
+      return;
+    }
+
+    validationPending = true;
+    submitButton.setAttribute('aria-busy', 'true');
+
+    try {
+      const endpoint = new URL(validationUrl);
+      endpoint.searchParams.set('email', emailInput.value.trim());
+      const response = await fetch(endpoint, { method: 'GET' });
+
+      if (response.status !== 200) {
+        message.textContent = 'No se encontró el email o no se pudo validar.';
+        message.hidden = false;
+        return;
+      }
+
+      form.submit();
+    } catch {
+      message.textContent = 'No se pudo comprobar el email. Inténtalo nuevamente.';
+      message.hidden = false;
+    } finally {
+      validationPending = false;
+      submitButton.removeAttribute('aria-busy');
+    }
+  });
+
+  form.append(emailLabel, emailInput, message, submitButton);
   container.append(form);
   block.replaceChildren(container);
 }
