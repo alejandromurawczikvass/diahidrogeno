@@ -20,6 +20,7 @@
 
 .section.hero-container.only-img .hero.hero-home .hero-wordmark{
     max-width: 100%;
+    margin: 0;
 }
 
 .hero {
