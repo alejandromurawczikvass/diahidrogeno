@@ -43,6 +43,13 @@
         },
         {
           "component": "text",
+          "name": "save-the-date",
+          "value": "",
+          "label": "Texto",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
           "name": "date",
           "value": "",
           "label": "Date",

@@ -19,11 +19,14 @@ export default function decorate(block) {
   let titleCell = null;
   let backgroundImageCell = null;
   let foregroundImageCell = null;
+  let saveTheDateCell = null;
   let dateCell = null;
   let backgroundImageUrl = null;
 
   const fields = rows.flatMap((row) => [...row.children]);
-  if (fields.length >= 4) {
+  if (fields.length >= 5) {
+    [titleCell, backgroundImageCell, foregroundImageCell, saveTheDateCell, dateCell] = fields;
+  } else if (fields.length >= 4) {
     [titleCell, backgroundImageCell, foregroundImageCell, dateCell] = fields;
   } else if (fields.length >= 3) {
     [titleCell, backgroundImageCell, dateCell] = fields;
@@ -92,15 +95,20 @@ export default function decorate(block) {
     heroGrid.append(wordmarkDiv);
   }
 
-  if (dateCell) {
+  if (dateCell && saveTheDateCell) {
     const dateDiv = document.createElement('div');
     dateDiv.className = 'hero-date';
     moveInstrumentation(dateCell, dateDiv);
+    moveInstrumentation(saveTheDateCell, dateDiv);
 
+    const saveTheDatep = document.createElement('p')
     const dateP = document.createElement('p');
     dateP.className = 'title-date';
+    dateP.className = 'title-save-the-date';
     dateP.textContent = dateCell.textContent.trim();
+    saveTheDatep.textContent = dateCell.textContent.trim();
 
+    dateDiv.append(saveTheDatep);
     dateDiv.append(dateP);
     heroGrid.append(dateDiv);
   }
