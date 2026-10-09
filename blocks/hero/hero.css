@@ -25,7 +25,6 @@
 
 .hero {
     position: relative;
-    min-height: 380px;
 }
 
 .hero h1 {
@@ -73,10 +72,11 @@
 }
 
 .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .hero-title {
@@ -85,17 +85,12 @@
 
 .title-hastag {
     margin: 0;
-    font-size: 28px;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--dark-color);
     font-family: var(--hashtag-font-family);
     text-transform: uppercase;
     letter-spacing: 1px;
-}
-
-.hero-wordmark {
-    grid-column: 1;
-    max-width: 400px;
 }
 
 .hero-wordmark picture {
@@ -116,17 +111,23 @@
 }
 
 .hero-date {
-    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    text-align: center;
 }
 
 .title-date{
     font-weight: 700;
     color: var(--link-color);
     font-family: var(--montserrat-bold-font-family);
+    letter-spacing: 10px;
+    line-height: 1;
 }
 
 .title-save-the-date{
-    font-weight: 100;
+    line-height: 1;
+    font-weight: 300;
     color: var(--dark-color);
     font-family: var(--montserrat-thin-font-family);
 }
@@ -134,24 +135,13 @@
 .title-date,
 .title-save-the-date {
     margin: 0;
-    font-size: 36px;
+    font-size: 24px;
 }
 
 @media (width >= 900px) {
-    .hero-container {
-        padding-top: 117px;
-    }
 
     .container-full {
         padding: 0 32px;
-    }
-
-    .hero-grid {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 60px;
     }
 
     .hero-title {
@@ -160,10 +150,18 @@
 
     .hero-wordmark {
         max-width: 100%;
-        margin-left: auto;
     }
 
-    .hero-date {
-        width: 100%;
+    .title-hastag {
+        font-size: 28px;
+    }
+
+    .title-date{
+        letter-spacing: 14px;
+    }
+    
+    .title-date,
+    .title-save-the-date {
+        font-size: 36px;
     }
 }
