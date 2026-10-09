@@ -63,6 +63,9 @@ export default function decorate(block) {
   if (foregroundImageCell) {
     const wordmarkDiv = document.createElement('div');
     wordmarkDiv.className = 'hero-wordmark';
+    if (!titleCell?.textContent.trim() && !dateCell?.textContent.trim()) {
+      document.querySelector('.section.hero-container').classList.add('only-img');
+    }
     moveInstrumentation(foregroundImageCell, wordmarkDiv);
 
     const picture = foregroundImageCell.querySelector('picture');
