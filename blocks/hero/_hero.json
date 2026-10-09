@@ -30,13 +30,6 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "backgroundImage",
-          "label": "Background Image",
-          "multi": false
-        },
-        {
-          "component": "reference",
-          "valueType": "string",
           "name": "foregroundImage",
           "label": "Foreground Image",
           "multi": false
@@ -45,7 +38,7 @@
           "component": "text",
           "name": "save-the-date",
           "value": "",
-          "label": "Texto",
+          "label": "Save the date",
           "valueType": "string"
         },
         {

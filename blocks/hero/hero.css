@@ -53,9 +53,6 @@
 .hero-home {
     padding: 60px 24px;
     position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     min-height: auto;
     overflow: hidden;
 }
@@ -122,11 +119,19 @@
     grid-column: 1;
 }
 
-.title-date {
+.title-date{
+    font-weight: 700;
+}
+
+.title-save-the-date{
+    font-weight: 300;
+}
+
+.title-date,
+.title-save-the-date {
     margin: 0;
     font-size: 36px;
-    font-weight: 400;
-    font-family: var(--heading-font-family);
+    font-family: var(--montserrat-font-family);
     letter-spacing: 2px;
     color: var(--light-color);
 }
