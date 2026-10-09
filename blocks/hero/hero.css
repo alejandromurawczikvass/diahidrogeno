@@ -89,7 +89,6 @@
     font-weight: 600;
     color: var(--dark-color);
     font-family: var(--hashtag-font-family);
-    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
