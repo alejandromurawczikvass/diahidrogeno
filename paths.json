@@ -5,7 +5,8 @@
   "/content/diahidrogeno/metadata:/metadata.json"
   ],
 "includes": [
-  "/content/diahidrogeno/"
+  "/content/diahidrogeno/",
+  "/content/dam/diahidrogeno/"
   ]
 }
  

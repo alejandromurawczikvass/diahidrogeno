@@ -52,6 +52,21 @@
               "value": "secondary"
             }
           ]
+        },
+        {
+          "component": "select",
+          "name": "linkTarget",
+          "label": "Open in",
+          "options": [
+            {
+              "name": "Same window",
+              "value": "_self"
+            },
+            {
+              "name": "New window",
+              "value": "_blank"
+            }
+          ]
         }
       ]
     }
