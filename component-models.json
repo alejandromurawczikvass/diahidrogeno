@@ -140,21 +140,6 @@
             "value": "secondary"
           }
         ]
-      },
-      {
-        "component": "select",
-        "name": "linkTarget",
-        "label": "Open in",
-        "options": [
-          {
-            "name": "Same window",
-            "value": "_self"
-          },
-          {
-            "name": "New window",
-            "value": "_blank"
-          }
-        ]
       }
     ]
   },
@@ -243,6 +228,64 @@
         "component": "aem-content",
         "name": "buttonLink",
         "label": "Enlace del Botón"
+      }
+    ]
+  },
+  {
+    "id": "button-link",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "url",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "name": "label",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "name": "tooltip",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "variant",
+        "label": "Type",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "secondary",
+            "value": "secondary"
+          },
+          {
+            "name": "accent",
+            "value": "accent"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "target",
+        "label": "Open in",
+        "options": [
+          {
+            "name": "Same window",
+            "value": ""
+          },
+          {
+            "name": "New window",
+            "value": "_blank"
+          }
+        ]
       }
     ]
   },

@@ -1,6 +1,7 @@
 {
 "mappings": [
   "/content/diahidrogeno/:/",
+  "/content/dam/diahidrogeno/:/assets/",
   "/content/diahidrogeno/configuration:/.helix/config.json",
   "/content/diahidrogeno/metadata:/metadata.json"
   ],
