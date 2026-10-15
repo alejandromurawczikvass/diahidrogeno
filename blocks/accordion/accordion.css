@@ -148,6 +148,15 @@
   text-align: left;
 }
 
+.accordion-panel li, 
+.accordion-panel p{
+  font-size: 14px;
+}
+
+.accordion-panel::marker{
+  color: var(--link-color);
+}
+
 .accordion-panel[style*="display: block"] {
   display: block;
 }

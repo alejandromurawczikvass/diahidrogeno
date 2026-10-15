@@ -135,8 +135,8 @@ h2 {
   font-size: var(--heading-font-size-xl); 
   color: var(--text-color-primary);
   text-align: center; 
-  font-weight: 100;
-  font-family: Myriad-Pro-Light, sans-serif;
+  font-weight: 400;
+  font-family: Myriad-Pro-Regular, sans-serif;
 }
 
 h3 { font-size: var(--heading-font-size-l); }
