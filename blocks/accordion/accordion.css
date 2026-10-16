@@ -30,7 +30,7 @@
 .accordion-item {
   display: flex;
   gap: 24px;
-  padding: 24px 0;
+  padding: 20px 0;
   border-bottom: none;
   position: relative;
 }
@@ -153,7 +153,7 @@
   font-size: 14px;
 }
 
-.accordion-panel::marker{
+.accordion-panel ul li::marker{
   color: var(--link-color);
 }
 
@@ -199,8 +199,7 @@
 
 /* Responsive adjustments */
 @media (width >= 900px) {
-  .accordion-item:not(:first-child) {
-    padding: 20px 0;
+  .accordion-item{
     gap: 32px;
   }
 }
